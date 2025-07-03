@@ -1,3 +1,7 @@
+<?php
+$page_css = isset($page_css) ? $page_css : 'default';
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -14,20 +18,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../assets/css/animate/animate.css">
-    <link rel="stylesheet" href="../../assets/css/plugins.css">
-    <link rel="stylesheet" href="../../assets/css/style.css">
-    <link rel="stylesheet" href="../../assets/css/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-    <link rel="icon" href="../../assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/signature-cuisine/assets/css/animate/animate.css">
+    <link rel="stylesheet" href="/signature-cuisine/assets/css/plugins.css">
+    <link rel="stylesheet" href="/signature-cuisine/assets/css/responsive.css">
+    <link rel="stylesheet" href="/signature-cuisine/assets/css/base.css">
+    <link rel="stylesheet" href="/signature-cuisine/assets/css/partials/form.css">
+    <link rel="stylesheet" href="/signature-cuisine/assets/css/partials/nav.css">
+    <link rel="stylesheet" href="/signature-cuisine/assets/css/partials/footer.css">
+
+    <?php if (isset($page_css) && $page_css === 'form'): ?>
+        <link rel="stylesheet" href="/signature-cuisine/assets/css/partials/form-page.css">
+    <?php elseif ($page_css === 'details'): ?>
+        <link rel="stylesheet" href="/signature-cuisine/assets/css/partials/details-page.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <?php else: ?>
+        <!-- Default CSS -->
+        <link rel="stylesheet" href="/signature-cuisine/assets/css/style.css">
+    <?php endif; ?>
+
+    <link rel="icon" href="/signature-cuisine/assets/images/favicon.ico" type="image/x-icon">
 
     <!-- JS -->
-    <script src="../../assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js" defer></script>
+    <script src="/signature-cuisine/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js" defer></script>
 </head>
 
 <body>
-<div class="preloader" aria-hidden="true">
-    <div class="loaded" aria-label="Loading">&nbsp;</div>
-</div>
+    <div class="preloader" aria-hidden="true">
+        <div class="loaded" aria-label="Loading">&nbsp;</div>
+    </div>

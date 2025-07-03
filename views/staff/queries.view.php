@@ -1,5 +1,11 @@
-<div class="container py-5">
-    <h2 class="mb-4 accent"><i class="fas fa-tasks me-2"></i>Manage Queries</h2>
+<?php
+$page_css = 'details';
+require(__DIR__ .'\..\partials\head.php');
+require(__DIR__ .'\..\partials\nav.php')
+?>
+
+<div class="container py-5 details-section">
+    <h2 class="mb-4 accent">Manage Queries</h2>
 
     <div class="table-responsive">
         <table class="table table-dark table-hover text-center">
@@ -57,9 +63,9 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content rounded-4 shadow-lg" style="background-color: #2c2c2c; color: #fff;">
             <div class="modal-header border-bottom border-accent">
-                <h5 class="modal-title accent" id="reservationModalLabel">
+                <h3 class="modal-title accent" id="reservationModalLabel">
                     <i class="fas fa-receipt me-2"></i>Query Overview
-                </h5>
+                </h3>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
             </div>
@@ -96,11 +102,11 @@
                     <div class="row">
                         <div class="col-md-12">
                             <p class="mb-1"><strong>Subject:</strong></p>
-                            <p id="r-heading"></p>
+                            <p class="mb-4" id="r-heading"></p>
                         </div>
                         <div class="col-md-12">
                             <p class="mb-1"><strong>Message:</strong></p>
-                            <p id="r-message"></p>
+                            <p class="mb-4" id="r-message"></p>
                         </div>
 
                     </div>

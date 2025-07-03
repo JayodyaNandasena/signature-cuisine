@@ -1,28 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Restaurant Reservation</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="../assets/css/animate/animate.css" rel="stylesheet">
-    <link href="../assets/css/plugins.css" rel="stylesheet">
-    <link href="../assets/css/partials/nav.css" rel="stylesheet">
-    <link href="../assets/css/partials/footer.css" rel="stylesheet">
-    <link href="../assets/css/reservation.css" rel="stylesheet">
-</head>
-<body>
-<section class="reservation-section py-5">
+<?php
+$page_css = 'form';
+require('partials/head.php');
+require('partials/nav.php')
+?>
+
+<section class="form-page-section reservation-form-section py-5">
     <div class="floating-elements"></div>
     <div class="container">
-        <!-- Enhanced Section Header -->
+        <!-- Section Header -->
         <div class="section-header">
             <h2>Reserve Your Table</h2>
         </div>
 
         <!-- Reservation Card -->
-        <div class="mx-auto reservation-card" style="max-width: 900px;">
+        <div class="mx-auto form-card" style="max-width: 900px;">
             <form action="" id="reservationForm" method="post">
                 <!-- Reservation Details -->
                 <div class="form-section">
@@ -61,7 +52,10 @@
                             <label class="form-label" for="date">
                                 <i class="fas fa-calendar-alt me-2"></i>Preferred Date
                             </label>
-                            <input class="form-control" id="date" name="date" required type="date">
+                            <div class="date-input-wrapper">
+                                <input class="form-control" id="date" name="date" required type="date">
+                                <i class="fas fa-calendar-alt date-icon"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -74,7 +68,7 @@
                     </div>
                     <div class="time-slots">
                         <div class="time-slot">
-                            <input id="slot1" name="start_time" required type="radio" value="19:30">
+                            <input id="slot1" name="start_time" type="radio" value="19:30" checked>
                             <label for="slot1">7:30 PM</label>
                         </div>
                         <div class="time-slot">
@@ -162,87 +156,4 @@
     </div>
 </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-<script>
-    // Set minimum date to today
-    document.getElementById('date').min = new Date().toISOString().split('T')[0];
-
-    // Add smooth animations to form fields
-    document.querySelectorAll('.form-control, .form-select').forEach(field => {
-        field.addEventListener('focus', function () {
-            this.style.transform = 'translateY(-2px)';
-        });
-
-        field.addEventListener('blur', function () {
-            this.style.transform = 'translateY(0)';
-        });
-    });
-
-    // Form validation
-    function validateForm() {
-        const requiredFields = document.querySelectorAll('[required]');
-        let isValid = true;
-
-        requiredFields.forEach(field => {
-            if (!field.value.trim()) {
-                field.style.borderColor = '#dc3545';
-                field.focus();
-                isValid = false;
-
-                setTimeout(() => {
-                    field.style.borderColor = '';
-                }, 3000);
-            } else {
-                field.style.borderColor = '#28a745';
-                setTimeout(() => {
-                    field.style.borderColor = '';
-                }, 2000);
-            }
-        });
-
-        return isValid;
-    }
-
-    // Form submission
-    document.getElementById('reservationForm').addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        if (!validateForm()) {
-            return;
-        }
-
-        // Show loading state
-        const submitBtn = document.querySelector('.submit-btn');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Processing...';
-        submitBtn.disabled = true;
-
-        // Simulate form submission (replace with actual form submission logic)
-        setTimeout(() => {
-            // Success animation
-            submitBtn.innerHTML = '<i class="fas fa-check me-2"></i>Reservation Confirmed!';
-            submitBtn.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
-
-            setTimeout(() => {
-                alert('Reservation submitted successfully! You will receive a confirmation email shortly.');
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-                submitBtn.style.background = '';
-            }, 1000);
-        }, 2000);
-    });
-
-    // Real-time validation feedback
-    document.querySelectorAll('[required]').forEach(field => {
-        field.addEventListener('blur', function () {
-            if (this.value.trim()) {
-                this.style.borderColor = '#28a745';
-                setTimeout(() => {
-                    this.style.borderColor = '';
-                }, 2000);
-            }
-        });
-    });
-</script>
-</body>
-</html>
+<?php require('partials/footer.php') ?>

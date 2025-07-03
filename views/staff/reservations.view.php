@@ -74,9 +74,9 @@ require(__DIR__ .'\..\partials\nav.php')
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content rounded-4 shadow-lg" style="background-color: #2c2c2c; color: #fff;">
             <div class="modal-header border-bottom border-accent">
-                <h5 class="modal-title accent" id="reservationModalLabel">
+                <h3 class="modal-title accent" id="reservationModalLabel">
                     <i class="fas fa-receipt me-2"></i>Reservation Overview
-                </h5>
+                </h3>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
             </div>

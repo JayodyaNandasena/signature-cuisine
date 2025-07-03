@@ -1,9 +1,10 @@
-<?php 
-$page_css = 'reservation';
-include 'head.php'; 
+<?php
+$page_css = 'form';
+require('partials/head.php');
+require('partials/nav.php')
 ?>
 
-<section class="reservation-section py-5">
+<section class="form-page-section py-5">
     <div class="floating-elements"></div>
     <div class="container">
         <!-- Section Header -->
@@ -12,7 +13,7 @@ include 'head.php';
         </div>
 
         <!-- Login Card -->
-        <div class="mx-auto reservation-card" style="max-width: 600px;">
+        <div class="mx-auto form-card" style="max-width: 600px;">
             <form id="loginForm" action="" method="post">
                 <div class="row g-4 mb-3">
                     <div class="col-12">
@@ -39,4 +40,4 @@ include 'head.php';
     </div>
 </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<?php require('partials/footer.php') ?>

@@ -1,0 +1,167 @@
+/* ========== CSS VARIABLES (Design Tokens) ========== */
+:root {
+    --primary-color: #ff6b35;
+    --secondary-color: #2c3e50;
+    --accent-color: #f39c12;
+    --dark-bg: #1a1a1a;
+    --darker-bg: #0f0f0f;
+    --card-bg: #262626;
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --border-color: #404040;
+    --card-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    --hover-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* ========== GLOBAL ELEMENT RESET AND BASE ========== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: 'roboto', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    color: var(--text-primary);
+    background-color: var(--dark-bg);
+}
+
+/* ========== TYPOGRAPHY ========== */
+h1, h2, h3 {
+    font-family: 'roboto', sans-serif;
+    font-weight: 300;
+    margin: 0;
+}
+
+h4, h5 {
+    font-family: 'Pacifico', cursive;
+    font-weight: 300;
+    margin: 0;
+    line-height: 2rem;
+}
+
+h1 {
+    font-size: 3rem;
+    line-height: 4rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    line-height: 3rem;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-size: 2.375rem;
+    line-height: 2.5rem;
+}
+
+h4 {
+    font-size: 1.875rem;
+    line-height: 2.2rem;
+}
+
+h5 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+h6 {
+    font-size: 1rem;
+    margin-bottom: .9rem;
+}
+
+p {
+    font-size: 1.1rem;
+    margin: 0 0 15px;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+/* ========== LINKS AND IMAGES ========== */
+a,
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+    outline: none;
+    transition: 0.2s ease-in-out;
+}
+
+img {
+    max-width: 100%;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* ========== BUTTONS ========== */
+.btn {
+    border-radius: 30px;
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: #fff;
+    border: 2px solid var(--primary-color);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #fff;
+}
+
+/* ========== CARDS ========== */
+.card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: var(--hover-shadow);
+    transform: translateY(-3px);
+}
+
+/* ========== UTILITIES ========== */
+.text-center {
+    text-align: center;
+}
+
+.mt-20 { margin-top: 20px; }
+.mt-40 { margin-top: 40px; }
+.mt-60 { margin-top: 60px; }
+
+.mb-20 { margin-bottom: 20px; }
+.mb-40 { margin-bottom: 40px; }
+.mb-60 { margin-bottom: 60px; }
+
+.pt-20 { padding-top: 20px; }
+.pb-20 { padding-bottom: 20px; }
+.pt-40 { padding-top: 40px; }
+.pb-40 { padding-bottom: 40px; }
+
+.full-width {
+    width: 100%;
+}

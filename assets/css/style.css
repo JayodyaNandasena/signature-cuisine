@@ -1,12 +1,3 @@
-/*
-
-Author: Bootstrapthemes
-Author URI: http://bootstrapthemes.co
-
-*/
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
 html,
 body {
     background-color: #1E2E3B;
@@ -20,9 +11,7 @@ body {
     font-weight: 300;
 }
 
-/*==========================================
-PRE LOADER 
-==========================================*/
+/* PRE LOADER */
 
 .preloader {
     position: fixed;
@@ -57,7 +46,6 @@ img {
     -ms-user-select: none;
     user-select: none;
     -webkit-user-drag: none;
-    user-drag: none;
 }
 
 a,
@@ -129,18 +117,6 @@ input[type="tel"],
 input[type="color"],
 .uneditable-input {
     outline: none;
-}
-
-.form-control {
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    font-size: 16px;
-    height: 34px;
-    max-width: 90%;
-    background: #323232;
-}
-
-.form-control:focus {
-    border-color: #d6962c;
 }
 
 h1,
@@ -410,17 +386,12 @@ Separator
 /*
 Button
 */
-.btn-primary.active.focus,
-.btn-primary.active:focus,
-.btn-primary.active:hover,
-.btn-primary:active.focus,
-.btn-primary:active:focus,
-.btn-primary:active:hover,
-.open > .dropdown-toggle.btn-primary.focus,
-.open > .dropdown-toggle.btn-primary:focus,
-.open > .dropdown-toggle.btn-primary:hover,
-.btn-primary.focus,
+
+.btn-primary:active,
+.btn-primary.active,
 .btn-primary:focus,
+.btn-primary.focus,
+.btn-primary:hover,
 .btn-primary.disabled,
 .btn-primary.disabled:hover {
     color: #ffffff;
@@ -433,9 +404,6 @@ Button
     border-radius: 0px;
 }
 
-/*.btn-default:active, .btn-default:hover  {
-    background: transparent;
-}*/
 .btn-lg,
 .btn-group-lg > .btn {
     padding: 8px;
@@ -511,7 +479,6 @@ button.btn-lg:hover {
     background-color: #E7A331;
     color: #ffffff;
     border: 2px solid #E7A331;
-    text-transform: uppercase;
     border-radius: 4px;
 }
 
@@ -628,131 +595,12 @@ h1 span {
     font-weight: 400;
 }
 
-/*for placeholder changes*/
-
-/*input::-webkit-input-placeholder {
-  color: #CACACA;
-  font-size: 18px;
-}
-input::-moz-placeholder {
-  color: #CACACA;
-  font-size: 18px;
-}
-input:-ms-input-placeholder {
-  color: #CACACA;
-  font-size: 18px;
-}*/
-
-
-/* Header top menu css */
-
-.header_top_menu {
-    background: #fff;
-    position: relative;
-}
-
-
-a.navbar-brand.our_logo {
-    position: absolute;
-    left: 0;
-    top: -50px;
-    width: 25%;
-}
-
-.header_top_menu .call_us_text a {
-    color: #666;
-    font-size: 15px;
-    margin-left: 15px;
-    padding: 5px;
-    display: inline-block;
-}
-
-.header_top_menu .call_us_text a i {
-    color: #e7a331;
-    margin-right: 10px;
-    font-size: 18px;
-}
-
-.head_top_social a {
-    color: #e7a331;
-    padding: 5px;
-    display: inline-block;
-}
-
-/* main menu */
-.menu-scroll {
-    padding-top: 0px;
-    padding-bottom: 0px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 300;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-    background-color: #000;
-    height: 80px;
-
-}
-
-.menu-scroll .header_top_menu {
-    display: none;
-}
-
-.menu-scroll a.navbar-brand.our_logo {
-    top: -16px;
-}
-
-.main_menu_bg {
-    background: rgba(0, 0, 0, .45);
-    height: 80px;
-
-}
-
-.navbar-default {
-    background-color: transparent;
-    border-color: transparent;
-}
-
-.container-fluid {
-    margin-top: 15px;
-
-}
-
-.main_menu_bg li a.booking {
-    border: 1px solid #fff;
-    border-radius: 4px;
-    color: #e7a331 !important;
-    padding: 5px 10px;
-    margin-top: 8px;
-}
-
-.main_menu_bg li a:hover.booking {
-    color: #da9b31 !important;
-}
-
-.main_menu_bg .navbar {
-    margin-bottom: 0px;
-
-}
-
-.navbar-default .navbar-nav > li > a {
-    color: #fff;
-}
-
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-    color: #da9b31;
-}
 
 /* slider section */
 
 .slider {
     background: url(../images/bannerbg.jpg) center center no-repeat;
     background-size: cover;
-}
-
-.main_slider {
 }
 
 .main_slider .main_slider_content h1 {
@@ -791,8 +639,7 @@ a.navbar-brand.our_logo {
 }
 
 .abouts_content {
-    padding: 120px 0px;
-    display: inline-block;
+    padding: 120px 0;
 }
 
 .single_abouts_text h4 {
@@ -857,8 +704,8 @@ a.navbar-brand.our_logo {
 }
 
 .head_title {
-    padding-top: 100px;
-    padding-bottom: 50px;
+    padding-top: 50px;
+    padding-bottom: 20px;
 }
 
 .single_portfolio_text {
@@ -905,19 +752,19 @@ a.navbar-brand.our_logo {
 
 
 /*Amazing Deliceas Section css */
-.ourPakeg .main_pakeg_content .head_title h3 {
+.ourPackage .main_package_content .head_title h3 {
     color: #fff;
 
 }
 
-.ourPakeg .main_pakeg_content .head_title h4 {
+.ourPackage .main_package_content .head_title h4 {
     color: #fff;
     font-family: 'Pacifico', cursive;
     font-size: 1.875rem;
 }
 
-.ourPakeg {
-    background: url(../images/newsbg.jpg) no-repeat center top scroll;
+.ourPackage {
+    background: url(../images/wooden-bg.jpg) no-repeat center top scroll;
     -moz-background-size: cover;
     -webkit-background-size: cover;
     -o-background-size: cover;
@@ -927,14 +774,14 @@ a.navbar-brand.our_logo {
     padding-bottom: 120px;
 }
 
-.single_pakeg_one {
+.single_package_one {
     background: url(../images/newstwo.jpg) left center no-repeat;
     padding: 30px;
     overflow: hidden;
-    margin-top: 60px;
+    margin-top: 10px;
 }
 
-.single_pakeg_two {
+.single_package_two {
     background: url(../images/newsthree.jpg) right center no-repeat;
     padding: 30px;
     overflow: hidden;
@@ -942,7 +789,7 @@ a.navbar-brand.our_logo {
 
 }
 
-.single_pakeg_three {
+.single_package_three {
     background: url(../images/newsone.jpg) left center no-repeat;
     padding: 30px;
     overflow: hidden;
@@ -950,20 +797,19 @@ a.navbar-brand.our_logo {
 
 }
 
-.single_pakeg_text {
+.single_package_text {
     background: #fff;
     padding: 30px;
     text-align: left;
 }
 
-.single_pakeg_text ul li {
+.single_package_text ul li {
     background: url(../images/pkli.png) no-repeat left center;
     padding: 15px 0px 15px 60px;
     margin-top: 20px;
 
 }
 
-/* Mobail Apps Section css */
 
 .reservation {
     background: url(../images/ftbg.jpg) top center no-repeat scroll;
@@ -1021,119 +867,20 @@ a.navbar-brand.our_logo {
     max-width: 90%;
 }
 
-/* Footer Section CSS */
-.footer_widget {
-    background: url(../images/footerbg.jpg) center top no-repeat scroll;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    width: 100%;
-    overflow: hidden;
-}
+/* CHANGES NEEDED FOR BOOTSTRAP 5 COMPATIBILITY */
 
-.footer_widget_content {
-    color: #fff;
-}
-
-.single_widget {
-    padding-bottom: 50px;
-    padding-top: 60px;
-}
-
-.single_widget h3 {
-    font-size: 1.875rem;
-
-    font-family: 'Pacifico', cursive;
-}
-
-.single_widget_info p {
-    margin-top: 40px;
-}
-
-.single_widget_info p span {
-    display: block;
-}
-
-.single_widget_info p span.phone_email {
-    margin-top: 15px;
-}
-
-.footer_socail_icon {
-    margin-top: 90px;
-}
-
-.footer_socail_icon a {
-    padding: 5px;
-}
-
-.footer_socail_icon a i {
-    font-size: 25px;
-    color: #e7a331;
+/* 1. Replace .btn-primary active/focus states (Bootstrap 5 uses different syntax) */
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary:focus,
+.btn-primary.focus,
+.btn-primary:hover,
+.btn-primary.disabled,
+.btn-primary.disabled:hover {
+    color: #ffffff;
+    background-color: #d6962c;
+    border-color: #d6962c;
 }
 
 
-.single_widget_info p span.date_day {
-    margin-top: 25px;
-    margin-bottom: 15px;
-    font-weight: 600;
-}
 
-.footer {
-    background: #000;
-}
-
-.footer .copyright p {
-    padding: 25px;
-    color: #fff;
-}
-
-.footer .copyright p i {
-    padding: 0px 10px;
-    color: #ff0000;
-}
-
-.footer .copyright p a {
-    padding: 0px 10px;
-    color: green;
-}
-
-
-/* scrollup */
-
-.scrollup {
-    width: 30px;
-    height: 30px;
-    border-radius: 15px;
-    opacity: .3;
-    position: fixed;
-    bottom: 20px;
-    right: 25px;
-    color: #fff;
-    cursor: pointer;
-    background-color: #000;
-    z-index: 1000;
-    transition: opacity .5s, background-color .5s;
-    -moz-transition: opacity .5s, background-color .5s;
-    -webkit-transition: opacity .5s, background-color .5s;
-}
-
-.scrollup:hover {
-    background: #e7a331;
-    opacity: 1;
-}
-
-.scrollup i {
-    font-size: 13px;
-    position: absolute;
-    opacity: 1;
-    color: #fff;
-    left: 50%;
-    top: 50%;
-    margin-top: -7px;
-    margin-left: -6px;
-    text-decoration: none;
-
-}
-
-/*reservation section*/

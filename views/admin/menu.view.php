@@ -1,64 +1,149 @@
-<div class="container py-5">
+<?php
+$page_css = 'details';
+require(__DIR__ .'\..\partials\head.php');
+require(__DIR__ .'\..\partials\nav.php')
+?>
+
+<div class="container py-5 details-section">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="accent">
-            Our Menu
-        </h2>
+        <h2 class="accent">Our Menu</h2>
         <button class="btn btn-accent" data-bs-toggle="modal" data-bs-target="#reservationModal">
             <i class="fas fa-plus me-2"></i>New Item
         </button>
     </div>
 
-    <div class="table-responsive">
-        <table class="table table-dark table-hover text-center">
-            <thead class="text-light">
-            <tr>
-                <th scope="col">Item ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Category</th>
-                <th scope="col">Price (LKR)</th>
-                <th scope="col"></th>
-            </tr>
-            </thead>
-            <tbody id="reservationTable">
-            <tr>
-                <td>F12345</td>
-                <td>Seafood Fried Rice</td>
-                <td>Main</td>
-                <td>1350</td>
-                <td>
-                    <i class="fas fa-trash-alt text-white"
-                       role="button"
-                       title="Delete"
-                       data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
-                    </i>
-                </td>
-            </tr>
-            <tr>
-                <td>F12346</td>
-                <td>Brownies</td>
-                <td>Dessert</td>
-                <td>1150</td>
-                <td>
-                    <i class="fas fa-trash-alt text-white"
-                       role="button"
-                       title="Delete"
-                       data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
-                    </i>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+    <!-- Tabs Navigation -->
+    <ul class="nav nav-tabs mb-4" id="menuTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab">All</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="mains-tab" data-bs-toggle="tab" data-bs-target="#mains" type="button" role="tab">Mains</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="desserts-tab" data-bs-toggle="tab" data-bs-target="#desserts" type="button" role="tab">Desserts</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="beverages-tab" data-bs-toggle="tab" data-bs-target="#beverages" type="button" role="tab">Beverages</button>
+        </li>
+    </ul>
+
+    <!-- Tab Content -->
+    <div class="tab-content" id="menuTabsContent">
+        <!-- All Items Tab -->
+        <div class="tab-pane fade show active" id="all" role="tabpanel">
+            <div class="table-responsive">
+                <table class="table table-dark table-hover text-center">
+                    <thead class="text-light">
+                        <tr>
+                            <th scope="col">Item ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Price (LKR)</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>F12345</td>
+                            <td>Seafood Fried Rice</td>
+                            <td>Main</td>
+                            <td>1350</td>
+                            <td><i class="fas fa-trash-alt text-white" role="button" title="Delete" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"></i></td>
+                        </tr>
+                        <tr>
+                            <td>F12346</td>
+                            <td>Brownies</td>
+                            <td>Dessert</td>
+                            <td>1150</td>
+                            <td><i class="fas fa-trash-alt text-white" role="button" title="Delete" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"></i></td>
+                        </tr>
+                        <!-- Add all items here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Mains Tab -->
+        <div class="tab-pane fade" id="mains" role="tabpanel">
+            <div class="table-responsive">
+                <table class="table table-dark table-hover text-center">
+                    <thead class="text-light">
+                        <tr>
+                            <th scope="col">Item ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price (LKR)</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>F12345</td>
+                            <td>Seafood Fried Rice</td>
+                            <td>1350</td>
+                            <td><i class="fas fa-trash-alt text-white" role="button" title="Delete" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"></i></td>
+                        </tr>
+                        <!-- Add more mains -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Desserts Tab -->
+        <div class="tab-pane fade" id="desserts" role="tabpanel">
+            <div class="table-responsive">
+                <table class="table table-dark table-hover text-center">
+                    <thead class="text-light">
+                        <tr>
+                            <th scope="col">Item ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price (LKR)</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>F12346</td>
+                            <td>Brownies</td>
+                            <td>1150</td>
+                            <td><i class="fas fa-trash-alt text-white" role="button" title="Delete" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"></i></td>
+                        </tr>
+                        <!-- Add more desserts -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Beverages Tab -->
+        <div class="tab-pane fade" id="beverages" role="tabpanel">
+            <div class="table-responsive">
+                <table class="table table-dark table-hover text-center">
+                    <thead class="text-light">
+                        <tr>
+                            <th scope="col">Item ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price (LKR)</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Add beverage items here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
+
 
 <!-- Confirm Delete Modal -->
 <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-dark text-white">
             <div class="modal-header border-0">
-                <h5 class="modal-title text-danger" id="confirmDeleteLabel">
+                <h3 class="modal-title text-danger" id="confirmDeleteLabel">
                     <i class="fas fa-exclamation-triangle me-2"></i>Confirm Delete
-                </h5>
+                </h3>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -76,10 +161,10 @@
 <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content rounded-4 shadow-lg">
-            <div class="modal-header">
-                <h5 class="modal-title accent" id="reservationModalLabel">
+            <div class="modal-header px-4">
+                <h3 class="modal-title accent" id="reservationModalLabel">
                     <i class="fas fa-receipt me-2"></i>Add New Menu Item
-                </h5>
+                </h3>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body px-4 pt-4 pb-2">
@@ -116,11 +201,14 @@
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-accent px-4" data-bs-dismiss="modal">
+            <div class="modal-footer border-0 px-4">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                     <i class="fas fa-times me-2"></i>Close
                 </button>
             </div>
         </div>
     </div>
 </div>
+
+</body>
+</html>

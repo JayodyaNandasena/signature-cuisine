@@ -28,23 +28,23 @@
                                     </li>
                                     <!--staff only-->
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/signature-cuisine/manage-reservation.html">Manage Reservations</a>
+                                        <a class="nav-link" href="/signature-cuisine/reservations.php">Manage Reservations</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/signature-cuisine/manage-queries.html">Manage Queries</a>
+                                        <a class="nav-link" href="/signature-cuisine/queries.php">Manage Queries</a>
                                     </li>
                                     <!--admin only-->
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/signature-cuisine/manage-menu.html">Manage Menu</a>
+                                        <a class="nav-link" href="/signature-cuisine/menu.php">Manage Menu</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/signature-cuisine/manage-users.html">Manage Users</a>
+                                        <a class="nav-link" href="/signature-cuisine/users.php">Manage Users</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="/signature-cuisine/login.php">Login</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link booking" href="/signature-cuisine/reservation.html">Reservations</a>
+                                        <a class="nav-link booking" href="/signature-cuisine/reservation.php">Reservations</a>
                                     </li>
                                 </ul>
                             </div>

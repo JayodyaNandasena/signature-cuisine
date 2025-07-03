@@ -4,7 +4,7 @@ require(__DIR__ .'\..\partials\head.php');
 require(__DIR__ .'\..\partials\nav.php')
 ?>
 
-<div class="container py-5">
+<div class="container py-5 details-section">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="accent">
             User Management
@@ -81,8 +81,8 @@ require(__DIR__ .'\..\partials\nav.php')
 <!-- Add New User Modal -->
 <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content rounded-4 shadow-lg bg-dark text-white">
-            <div class="modal-header border-0">
+        <div class="modal-content rounded-4 shadow-lg">
+            <div class="modal-header px-4">
                 <h3 class="modal-title accent" id="reservationModalLabel">
                     <i class="fas fa-user-plus me-2"></i>Add New User
                 </h3>
@@ -155,8 +155,8 @@ require(__DIR__ .'\..\partials\nav.php')
                 </form>
             </div>
 
-            <div class="modal-footer border-0">
-                <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">
+            <div class="modal-footer border-0 px-4">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                     <i class="fas fa-times me-2"></i>Close
                 </button>
             </div>
