@@ -1,0 +1,123 @@
+CREATE DATABASE IF NOT EXISTS restaurantdb2;
+
+USE restaurantdb2;
+
+-- CREATING TABLES
+
+CREATE TABLE food (
+    id INT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    category ENUM('main', 'dessert', 'beverage') NOT NULL
+);
+
+CREATE TABLE customerDetails (
+    id INT PRIMARY KEY,
+    firstName VARCHAR(100) NOT NULL,
+    lastName VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    phone VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE branch (
+    id INT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE reservation (
+    id INT PRIMARY KEY,
+    date DATE NOT NULL,
+    time TIME NOT NULL,
+    guestCount INT NOT NULL,
+    notes TEXT,
+    customerId INT NOT NULL,
+    branchId INT NOT NULL,
+    FOREIGN KEY (customerId) REFERENCES customerDetails(id),
+    FOREIGN KEY (branchId) REFERENCES branch(id)
+);
+
+CREATE TABLE staff (
+    id INT PRIMARY KEY,
+    firstName VARCHAR(100) NOT NULL,
+    lastName VARCHAR(100) NOT NULL,
+    mobile VARCHAR(20) NOT NULL,
+    branchId INT NOT NULL,
+    FOREIGN KEY (branchId) REFERENCES branch(id)
+);
+
+CREATE TABLE account (
+    email VARCHAR(100) PRIMARY KEY,
+    password VARCHAR(255) NOT NULL,
+    isAdmin BOOLEAN NOT NULL,
+    staffId INT NOT NULL,
+    FOREIGN KEY (staffId) REFERENCES staff(id)
+);
+
+CREATE TABLE queries (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    senderName VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    subject VARCHAR(150) NOT NULL,
+    message TEXT NOT NULL,
+    reply TEXT,
+    date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    staffId INT,
+    FOREIGN KEY (staffId) REFERENCES staff(id)
+);
+
+-- SEEDING DATA
+
+INSERT INTO food (id, name, price, category) VALUES
+(1, 'Chicken Kottu', 950.00, 'main'),
+(2, 'Egg Fried Rice with Chicken', 1050.00, 'main'),
+(3, 'Devilled Chicken with Rice', 1200.00, 'main'),
+(4, 'String Hoppers with Kiri Hodi & Curry', 650.00, 'main'),
+(5, 'Lamprais', 1300.00, 'main'),
+(6, 'Fish Ambul Thiyal with Rice', 1100.00, 'main'),
+(7, 'Pol Roti with Lunumiris & Dhal Curry', 500.00, 'main'),
+(8, 'Wattalappam', 450.00, 'dessert'),
+(9, 'Chocolate Biscuit Pudding', 400.00, 'dessert'),
+(10, 'Coconut Treacle Pancakes', 380.00, 'dessert'),
+(11, 'Fruit Salad with Ice Cream', 500.00, 'dessert'),
+(12, 'Curd and Treacle', 450.00, 'dessert'),
+(13, 'Faluda', 550.00, 'beverage'),
+(14, 'Woodapple Juice', 350.00, 'beverage'),
+(15, 'Nelli Juice', 300.00, 'beverage'),
+(16, 'Iced Milo', 450.00, 'beverage'),
+(17, 'King Coconut', 250.00, 'beverage'),
+(18, 'Milk Tea', 150.00, 'beverage'),
+(19, 'Plain Tea', 100.00, 'beverage'),
+(20, 'Mineral Water (500ml)', 120.00, 'beverage');
+
+INSERT INTO customerDetails (id, firstName, lastName, email, phone) VALUES
+(1, 'John', 'Doe', 'john.doe@example.com', '+94771234567'),
+(2, 'Jane', 'Smith', 'jane.smith@example.com', '+94776543210'),
+(3, 'Amal', 'Perera', 'amal.perera@example.lk', '+94771239876');
+
+INSERT INTO branch (id, name) VALUES
+(1, 'Peradeniya'),
+(2, 'Kandy'),
+(3, 'Colombo'),
+(4, 'Kurunegala');
+
+INSERT INTO staff (id, firstName, lastName, mobile, branchId) VALUES
+(1, 'Nimal', 'Fernando', '771230000', 1),
+(2, 'Kavindi', 'Wijesinghe', '776540000', 2),
+(3, 'Sunil', 'Dias', '775670000', 3),
+(4, 'Kamal', 'Perera', '775670000', 4);
+
+INSERT INTO account (email, password, isAdmin, staffId) VALUES
+('nimalfernando@restaurant.com', '12345', 1, 1),
+('kavindiw@restaurant.com', '12345', 0, 2),
+('sunildias@restaurant.com', '12345', 0, 3),
+('kamalperera@restaurant.com', '12345', 1, 4);
+
+INSERT INTO reservation (id, date, time, guestCount, notes, customerId, branchId) VALUES
+(1, '2025-06-25', '19:00:00', 4, 'Birthday dinner', 1, 1),
+(2, '2025-06-26', '13:30:00', 2, NULL, 2, 2),
+(3, '2025-06-27', '20:00:00', 6, 'Company gathering', 3, 3);
+
+INSERT INTO queries (senderName, email, subject, message, reply, staffId) VALUES
+('John Doe', 'john.doe@example.com', 'Table availability', 'Is there a table for 6 tomorrow evening?', 'Yes, available at 8 PM.', 1),
+('Jane Smith', 'jane.smith@example.com', 'Menu inquiry', 'Do you have vegan options?', NULL, 2),
+('Amal Perera', 'amal.perera@example.lk', 'Reservation help', 'Need to change my booking date.', 'Changed to 28th June.', 3);
