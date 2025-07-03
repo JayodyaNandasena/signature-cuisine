@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS restaurantdb2;
+CREATE DATABASE IF NOT EXISTS signature_cuisine;
 
-USE restaurantdb2;
+USE signature_cuisine;
 
 -- CREATING TABLES
 
