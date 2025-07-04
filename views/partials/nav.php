@@ -15,7 +15,7 @@
                             <div class="collapse navbar-collapse" id="navbarNav">
                                 <ul class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/signature-cuisine/home.php">Home</a>
+                                        <a class="nav-link" href="/signature-cuisine/controllers/home.php">Home</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#abouts">About Us</a>
@@ -28,23 +28,23 @@
                                     </li>
                                     <!--staff only-->
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/signature-cuisine/reservations.php">Manage Reservations</a>
+                                        <a class="nav-link" href="/signature-cuisine/controllers/reservations.php">Manage Reservations</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/signature-cuisine/queries.php">Manage Queries</a>
+                                        <a class="nav-link" href="/signature-cuisine/controllers/queries.php">Manage Queries</a>
                                     </li>
                                     <!--admin only-->
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/signature-cuisine/menu.php">Manage Menu</a>
+                                        <a class="nav-link" href="/signature-cuisine/controllers/menu.php">Manage Menu</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/signature-cuisine/users.php">Manage Users</a>
+                                        <a class="nav-link" href="/signature-cuisine/controllers/users.php">Manage Users</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/signature-cuisine/login.php">Login</a>
+                                        <a class="nav-link" href="/signature-cuisine/controllers/login.php">Login</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link booking" href="/signature-cuisine/reservation.php">Reservations</a>
+                                        <a class="nav-link booking" href="/signature-cuisine/controllers/reservation.php">Reservations</a>
                                     </li>
                                 </ul>
                             </div>

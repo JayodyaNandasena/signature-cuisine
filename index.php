@@ -1,12 +1,13 @@
 <?php
 
+
 // Load config
 require_once 'assets/config/config.php';
 
 // Check if setup already done
 if (file_exists(SETUP_FLAG_FILE)) {
     echo "Setup has already been completed. The SQL setup won't run again.<br>";
-    echo '<a href="home.php">Home page</a>';
+    echo '<a href="controllers/home.php">Home page</a>';
     exit;
 }
 
@@ -50,4 +51,4 @@ function executeSQLFile(string $filename, mysqli $link): void
 executeSQLFile(SQL_FILE_PATH, $mysqli);
 $mysqli->close();
 
-echo '<a href="home.php">Home page</a>';
+echo '<a href="controllers/home.php">Home page</a>';

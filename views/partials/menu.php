@@ -1,9 +1,9 @@
-<section id="menu" class="ourPackage">
+<section id="menu" class="ourPackage slider_overlay">
     <div class="container">
         <div class="main_package_content">
             <div class="row">
                 <div class="head_title text-center">
-                    <h4>Our Menu</h4>
+                    <h4 class="mb-2">Our Menu</h4>
                     <h3>Savor the Art of Flavor</h3>
                 </div>
 

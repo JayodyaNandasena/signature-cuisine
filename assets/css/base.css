@@ -5,9 +5,11 @@
     --accent-color: #f39c12;
     --dark-bg: #1a1a1a;
     --darker-bg: #0f0f0f;
+    --blue-bg: #1E2E3B;
     --card-bg: #262626;
     --text-primary: #e0e0e0;
     --text-secondary: #b0b0b0;
+    --text-home: #565656;
     --border-color: #404040;
     --card-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
     --hover-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
@@ -87,6 +89,12 @@ p:last-child {
     margin-bottom: 0;
 }
 
+ol,
+ul {
+    list-style: none;
+    padding: 0;
+}
+
 /* ========== LINKS AND IMAGES ========== */
 a,
 a:hover,
@@ -164,4 +172,26 @@ img {
 
 .full-width {
     width: 100%;
+}
+
+/* ========== PRELOADER ========== */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fefefe;
+    z-index: 99999;
+}
+
+.loaded {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: url(../images/preloading.gif) center center no-repeat;
+    background-size: cover;
 }

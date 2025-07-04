@@ -148,5 +148,11 @@ require(__DIR__ .'\..\partials\nav.php')
         document.getElementById("r-requests").innerText = data.requests;
     }
 </script>
+
+<script src="/signature-cuisine/assets/js/vendor/jquery-1.11.2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/signature-cuisine/assets/js/jquery-easing/jquery.easing.1.3.js"></script>
+<script src="/signature-cuisine/assets/js/wow/wow.min.js"></script>
+<script src="/signature-cuisine/assets/js/main.js"></script>
 </body>
 </html>
