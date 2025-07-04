@@ -8,53 +8,41 @@ require(__DIR__ .'\..\partials\nav.php')
     <h2 class="mb-4 accent">Manage Queries</h2>
 
     <div class="table-responsive">
-        <table class="table table-dark table-hover text-center">
-            <thead class="table-dark text-dark">
-            <tr>
-                <th scope="col">Query ID</th>
-                <th scope="col">Date</th>
-                <th scope="col">Sender</th>
-                <th scope="col">Subject</th>
-            </tr>
-            </thead>
-            <tbody id="reservationTable">
-            <!-- Sample row -->
-            <tr data-bs-toggle="modal" data-bs-target="#reservationModal" onclick="loadReservationDetails(this)">
-                <td>Q12345</td>
-                <td>2025-06-20</td>
-                <td>John Doe</td>
-                <td>Detailed Menu</td>
-                <!-- Hidden data for modal -->
-                <td hidden class="full-data">
-                    {
-                    "id": "Q12345",
-                    "date": "2025-06-20",
-                    "name": "John Doe",
-                    "email": "john@example.com",
-                    "heading": "Detailed Menu",
-                    "message": "Detailed menu is needed with portion sizes"
-                    }
-                </td>
-            </tr>
-            <tr data-bs-toggle="modal" data-bs-target="#reservationModal" onclick="loadReservationDetails(this)">
-                <td>Q12346</td>
-                <td>2025-06-20</td>
-                <td>John Doe</td>
-                <td>Opening Hours</td>
-                <!-- Hidden data for modal -->
-                <td hidden class="full-data">
-                    {
-                    "id": "Q12345",
-                    "date": "2025-06-21",
-                    "name": "Jane Doe",
-                    "email": "janeddoe@example.com",
-                    "heading": "Opening Hours",
-                    "message": "Detailed opening hour details is needed. Detailed opening hour details is needed. Detailed opening hour details is needed. Detailed opening hour details is needed. Detailed opening hour details is needed. Detailed opening hour details is needed."
-                    }
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <?php if (!empty($queries)): ?>
+            <table class="table table-dark table-hover text-center">
+                <thead class="table-dark text-dark">
+                    <tr>
+                        <th scope="col">Query ID</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Sender</th>
+                        <th scope="col">Subject</th>
+                    </tr>
+                </thead>
+                <tbody id="reservationTable">
+                    <?php foreach ($queries as $query): ?>
+                        <tr data-bs-toggle="modal" data-bs-target="#reservationModal" onclick="loadReservationDetails(this)">
+                            <td><?= $query['id'] ?></td>
+                            <td><?= $query['date'] ?></td>
+                            <td><?= $query['senderName'] ?></td>
+                            <td><?= $query['subject'] ?></td>
+                            <!-- Hidden data for modal -->
+                            <td hidden class="full-data">
+                                {
+                                "id": "Q12345",
+                                "date": "2025-06-20",
+                                "name": "John Doe",
+                                "email": "john@example.com",
+                                "heading": "Detailed Menu",
+                                "message": "Detailed menu is needed with portion sizes"
+                                }
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php else: ?>
+            <p>No queries found.</p>
+        <?php endif; ?>
     </div>
 </div>
 
