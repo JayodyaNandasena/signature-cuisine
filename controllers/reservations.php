@@ -7,7 +7,7 @@ try {
     // Get database instance
     $db = Database::getInstance();
 
-    // Fetch all users
+    // Fetch all reservations
     $reservations = $db->query(
         "SELECT id, guestCount, date, time, SUBSTR(notes, 1, 20) AS note
          FROM reservation

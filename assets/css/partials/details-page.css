@@ -106,6 +106,10 @@ h3 {
     background-color: var(--primary-color);
 }
 
+.border-accent {
+    border-color: var(--accent-color) !important;
+}
+
 .modal-header,
 .modal-footer {
     border-color: var(--primary-color);

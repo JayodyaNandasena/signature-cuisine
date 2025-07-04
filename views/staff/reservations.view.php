@@ -21,7 +21,12 @@ require(__DIR__ .'\..\partials\nav.php')
                 </thead>
                 <tbody id="reservationTable">
                     <?php foreach ($reservations as $reservation): ?>
-                        <tr data-bs-toggle="modal" data-bs-target="#reservationModal" onclick="loadReservationDetails(this)">
+                        <tr
+                            data-bs-toggle="modal"
+                            data-bs-target="#reservationModal"
+                            onclick="loadReservationDetails(this)"
+                            data-id="<?= $reservation['id'] ?>"
+                        >
                             <td><?= $reservation['id'] ?></td>
                             <td><?= $reservation['guestCount'] ?></td>
                             <td><?= $reservation['date'] ?></td>
@@ -33,23 +38,8 @@ require(__DIR__ .'\..\partials\nav.php')
                                     -
                                 <?php endif; ?>
                             </td>
-                            <!-- Hidden data for modal -->
-                            <td hidden class="full-data">
-                                {
-                                "id": "R12345",
-                                "restaurant": "Kandy Branch",
-                                "guests": "2",
-                                "date": "2025-06-20",
-                                "time": "8:00 PM",
-                                "firstName": "John",
-                                "lastName": "Doe",
-                                "email": "john@example.com",
-                                "phone": "0771234567",
-                                "requests": "Anniversary dinner"
-                                }
-                            </td>
                         </tr>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         <?php else: ?>
@@ -61,59 +51,94 @@ require(__DIR__ .'\..\partials\nav.php')
 <!-- Modal -->
 <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content rounded-4 shadow-lg" style="background-color: #2c2c2c; color: #fff;">
-            <div class="modal-header border-bottom border-accent">
-                <h3 class="modal-title accent" id="reservationModalLabel">
+        <div class="modal-content rounded-4 shadow-lg border-0" style="background-color: #2c2c2c; color: #fff;">
+            <!-- Header -->
+            <div class="modal-header border-bottom border-accent px-4 py-3">
+                <h3 class="modal-title accent fw-semibold mb-0" id="reservationModalLabel">
                     <i class="fas fa-receipt me-2"></i>Reservation Overview
                 </h3>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body px-4 pt-4 pb-2">
 
-                <!-- Reservation Info Card -->
-                <div class="mb-4 p-3 rounded-3" style="background-color: #1f1f1f;">
-                    <h6 class="accent mb-3">
-                        Reservation Details
-                    </h6>
-                    <div class="row">
-                        <div class="col-md-6"><p class="mb-1"><strong>ID:</strong> <span id="r-id"></span></p></div>
-                        <div class="col-md-6"><p class="mb-1"><strong>Restaurant:</strong> <span
-                                id="r-restaurant"></span></p></div>
-                        <div class="col-md-6"><p class="mb-1"><strong>Date:</strong> <span id="r-date"></span></p></div>
-                        <div class="col-md-6"><p class="mb-1"><strong>Time:</strong> <span id="r-time"></span></p></div>
-                        <div class="col-md-6"><p class="mb-1"><strong>Party Size:</strong> <span id="r-guests"></span>
-                        </p></div>
+            <!-- Body -->
+            <div class="modal-body px-4 pt-4 pb-3">
+                <!-- Reservation Details -->
+                <div class="mb-4 p-4 rounded-3" style="background-color: #1f1f1f;">
+                    <h5 class="accent mb-3">Reservation Details</h5>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <div class="me-2 fw-semibold" style="min-width: 90px;">ID:</div>
+                                <div><span id="r-id"></span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <div class="me-2 fw-semibold" style="min-width: 90px;">Restaurant:</div>
+                                <div><span id="r-restaurant"></span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <div class="me-2 fw-semibold" style="min-width: 90px;">Date:</div>
+                                <div><span id="r-date"></span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <div class="me-2 fw-semibold" style="min-width: 90px;">Time:</div>
+                                <div><span id="r-time"></span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <div class="me-2 fw-semibold" style="min-width: 90px;">Party Size:</div>
+                                <div><span id="r-guests"></span></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Customer Info Card -->
-                <div class="mb-4 p-3 rounded-3" style="background-color: #1f1f1f;">
-                    <h6 class="accent mb-3">
-                        Customer Information
-                    </h6>
-                    <div class="row">
-                        <div class="col-md-6"><p class="mb-1"><strong>First Name:</strong> <span id="r-fname"></span>
-                        </p></div>
-                        <div class="col-md-6"><p class="mb-1"><strong>Last Name:</strong> <span id="r-lname"></span></p>
+                <!-- Customer Info -->
+                <div class="mb-4 p-4 rounded-3" style="background-color: #1f1f1f;">
+                    <h5 class="accent mb-3">Customer Information</h5>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <div class="me-2 fw-semibold" style="min-width: 90px;">First Name:</div>
+                                <div><span id="r-fname"></span></div>
+                            </div>
                         </div>
-                        <div class="col-md-6"><p class="mb-1"><strong>Email:</strong> <span id="r-email"></span></p>
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <div class="me-2 fw-semibold" style="min-width: 90px;">Last Name:</div>
+                                <div><span id="r-lname"></span></div>
+                            </div>
                         </div>
-                        <div class="col-md-6"><p class="mb-1"><strong>Phone:</strong> <span id="r-phone"></span></p>
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <div class="me-2 fw-semibold" style="min-width: 90px;">Email:</div>
+                                <div><span id="r-email"></span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <div class="me-2 fw-semibold" style="min-width: 90px;">Phone:</div>
+                                <div><span id="r-phone"></span></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Special Requests Card -->
-                <div class="mb-3 p-3 rounded-3" style="background-color: #1f1f1f;">
-                    <h6 class="accent mb-2">
-                        Special Requests
-                    </h6>
-                    <p id="r-requests" class=""></p>
+                <!-- Special Requests -->
+                <div class="mb-3 p-4 rounded-3" style="background-color: #1f1f1f;">
+                    <h5 class="accent mb-2">Special Requests</h5>
+                    <p id="r-requests" class="mb-0"></p>
                 </div>
-
             </div>
-            <div class="modal-footer border-top border-accent">
+
+            <!-- Footer -->
+            <div class="modal-footer border-top border-accent py-3">
                 <button type="button" class="btn btn-accent px-4" data-bs-dismiss="modal">
                     <i class="fas fa-times me-2"></i>Close
                 </button>
@@ -122,20 +147,30 @@ require(__DIR__ .'\..\partials\nav.php')
     </div>
 </div>
 
+
 <script>
-    function loadReservationDetails(row) {
-        const data = JSON.parse(row.querySelector(".full-data").innerText);
-        document.getElementById("r-id").innerText = data.id;
-        document.getElementById("r-restaurant").innerText = data.restaurant;
-        document.getElementById("r-guests").innerText = data.guests;
-        document.getElementById("r-date").innerText = data.date;
-        document.getElementById("r-time").innerText = data.time;
-        document.getElementById("r-fname").innerText = data.firstName;
-        document.getElementById("r-lname").innerText = data.lastName;
-        document.getElementById("r-email").innerText = data.email;
-        document.getElementById("r-phone").innerText = data.phone;
-        document.getElementById("r-requests").innerText = data.requests;
-    }
+function loadReservationDetails(row) {
+    const reservationId = row.getAttribute('data-id');
+
+    fetch(`/signature-cuisine/controllers/api/getReservationDetails.php?id=${reservationId}`)
+        .then(response => response.json())
+        .then(data => {
+            // Populate modal with the reservation data
+            document.getElementById("r-id").innerText = data.id;
+            document.getElementById("r-restaurant").innerText = data.branchName;
+            document.getElementById("r-guests").innerText = data.guestCount;
+            document.getElementById("r-date").innerText = data.date;
+            document.getElementById("r-time").innerText = data.time;
+            document.getElementById("r-fname").innerText = data.firstName;
+            document.getElementById("r-lname").innerText = data.lastName;
+            document.getElementById("r-email").innerText = data.email;
+            document.getElementById("r-phone").innerText = data.phone;
+            document.getElementById("r-requests").innerText = data.notes || "-";
+        })
+        .catch(error => {
+            console.error("Failed to load reservation details:", error);
+        });
+}
 </script>
 
 <script src="/signature-cuisine/assets/js/vendor/jquery-1.11.2.min.js"></script>
