@@ -8,64 +8,53 @@ require(__DIR__ .'\..\partials\nav.php')
     <h2 class="mb-4 accent">Manage Reservations</h2>
 
     <div class="table-responsive">
-        <table class="table table-dark table-hover text-center">
-            <thead class="table-dark text-dark">
-            <tr>
-                <th scope="col">Reservation ID</th>
-                <th scope="col">Party Size</th>
-                <th scope="col">Date</th>
-                <th scope="col">Time</th>
-                <th scope="col">Special Requests</th>
-            </tr>
-            </thead>
-            <tbody id="reservationTable">
-            <!-- Sample row -->
-            <tr data-bs-toggle="modal" data-bs-target="#reservationModal" onclick="loadReservationDetails(this)">
-                <td>R12345</td>
-                <td>2</td>
-                <td>2025-06-20</td>
-                <td>8:00 PM</td>
-                <td>Anniversary dinner</td>
-                <!-- Hidden data for modal -->
-                <td hidden class="full-data">
-                    {
-                    "id": "R12345",
-                    "restaurant": "Kandy Branch",
-                    "guests": "2",
-                    "date": "2025-06-20",
-                    "time": "8:00 PM",
-                    "firstName": "John",
-                    "lastName": "Doe",
-                    "email": "john@example.com",
-                    "phone": "0771234567",
-                    "requests": "Anniversary dinner"
-                    }
-                </td>
-            </tr>
-            <tr data-bs-toggle="modal" data-bs-target="#reservationModal" onclick="loadReservationDetails(this)">
-                <td>R12346</td>
-                <td>2</td>
-                <td>2025-06-20</td>
-                <td>8:00 PM</td>
-                <td></td>
-                <!-- Hidden data for modal -->
-                <td hidden class="full-data">
-                    {
-                    "id": "R12346",
-                    "restaurant": "Colombo Branch",
-                    "guests": "2",
-                    "date": "2025-06-20",
-                    "time": "9:00 PM",
-                    "firstName": "John",
-                    "lastName": "Doe",
-                    "email": "john@example.com",
-                    "phone": "0771234567",
-                    "requests": ""
-                    }
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <?php if (!empty($reservations)): ?>
+            <table class="table table-dark table-hover text-center">
+                <thead class="table-dark text-dark">
+                    <tr>
+                        <th scope="col">Reservation ID</th>
+                        <th scope="col">Party Size</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Special Requests</th>
+                    </tr>
+                </thead>
+                <tbody id="reservationTable">
+                    <?php foreach ($reservations as $reservation): ?>
+                        <tr data-bs-toggle="modal" data-bs-target="#reservationModal" onclick="loadReservationDetails(this)">
+                            <td><?= $reservation['id'] ?></td>
+                            <td><?= $reservation['guestCount'] ?></td>
+                            <td><?= $reservation['date'] ?></td>
+                            <td><?= date("g:i A", strtotime($reservation['time'])) ?></td>
+                            <td>
+                                <?php if (!empty($reservation['note'])): ?>
+                                    <?= $reservation['note'] ?>
+                                <?php else: ?>
+                                    -
+                                <?php endif; ?>
+                            </td>
+                            <!-- Hidden data for modal -->
+                            <td hidden class="full-data">
+                                {
+                                "id": "R12345",
+                                "restaurant": "Kandy Branch",
+                                "guests": "2",
+                                "date": "2025-06-20",
+                                "time": "8:00 PM",
+                                "firstName": "John",
+                                "lastName": "Doe",
+                                "email": "john@example.com",
+                                "phone": "0771234567",
+                                "requests": "Anniversary dinner"
+                                }
+                            </td>
+                        </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php else: ?>
+            <p>No reservations found.</p>
+        <?php endif; ?>
     </div>
 </div>
 

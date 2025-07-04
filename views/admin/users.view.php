@@ -1,7 +1,7 @@
 <?php
 $page_css = 'details';
 require(__DIR__ .'\..\partials\head.php');
-require(__DIR__ .'\..\partials\nav.php')
+require(__DIR__ .'\..\partials\nav.php');
 ?>
 
 <div class="container py-5 details-section">
