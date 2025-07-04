@@ -33,103 +33,122 @@ require(__DIR__ .'\..\partials\nav.php')
         <!-- All Items Tab -->
         <div class="tab-pane fade show active" id="all" role="tabpanel">
             <div class="table-responsive">
-                <table class="table table-dark table-hover text-center">
-                    <thead class="text-light">
-                        <tr>
-                            <th scope="col">Item ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Price (LKR)</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>F12345</td>
-                            <td>Seafood Fried Rice</td>
-                            <td>Main</td>
-                            <td>1350</td>
-                            <td><i class="fas fa-trash-alt text-white" role="button" title="Delete" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"></i></td>
-                        </tr>
-                        <tr>
-                            <td>F12346</td>
-                            <td>Brownies</td>
-                            <td>Dessert</td>
-                            <td>1150</td>
-                            <td><i class="fas fa-trash-alt text-white" role="button" title="Delete" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"></i></td>
-                        </tr>
-                        <!-- Add all items here -->
-                    </tbody>
-                </table>
+                <?php if (!empty($all)): ?>
+                    <table class="table table-dark table-hover text-center">
+                        <thead class="text-light">
+                            <tr>
+                                <th scope="col">Item ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Price (LKR)</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($all as $item): ?>
+                                <tr>
+                                    <td><?= htmlspecialchars($item['id']) ?></td>
+                                    <td><?= htmlspecialchars($item['name']) ?></td>
+                                    <td><?= htmlspecialchars($item['category']) ?></td>
+                                    <td><?= htmlspecialchars($item['price']) ?></td>
+                                    <td><i class="fas fa-trash-alt text-white" role="button" title="Delete" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"></i></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php else: ?>
+                    <p>No menu items found.</p>
+                <?php endif; ?>
             </div>
         </div>
 
         <!-- Mains Tab -->
         <div class="tab-pane fade" id="mains" role="tabpanel">
             <div class="table-responsive">
-                <table class="table table-dark table-hover text-center">
-                    <thead class="text-light">
-                        <tr>
-                            <th scope="col">Item ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Price (LKR)</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>F12345</td>
-                            <td>Seafood Fried Rice</td>
-                            <td>1350</td>
-                            <td><i class="fas fa-trash-alt text-white" role="button" title="Delete" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"></i></td>
-                        </tr>
-                        <!-- Add more mains -->
-                    </tbody>
-                </table>
+                <?php if (!empty($mains)): ?>
+                    <table class="table table-dark table-hover text-center">
+                        <thead class="text-light">
+                            <tr>
+                                <th scope="col">Item ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price (LKR)</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($mains as $item): ?>
+                                <tr>
+                                    <td><?= $item['id'] ?></td>
+                                    <td><?= $item['name'] ?></td>
+                                    <td><?= $item['price'] ?></td>
+                                    <td><i class="fas fa-trash-alt text-white" role="button" title="Delete" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"></i></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php else: ?>
+                    <p>No main courses found.</p>
+                <?php endif; ?>
             </div>
         </div>
 
         <!-- Desserts Tab -->
         <div class="tab-pane fade" id="desserts" role="tabpanel">
             <div class="table-responsive">
-                <table class="table table-dark table-hover text-center">
-                    <thead class="text-light">
-                        <tr>
-                            <th scope="col">Item ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Price (LKR)</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>F12346</td>
-                            <td>Brownies</td>
-                            <td>1150</td>
-                            <td><i class="fas fa-trash-alt text-white" role="button" title="Delete" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"></i></td>
-                        </tr>
-                        <!-- Add more desserts -->
-                    </tbody>
-                </table>
+                <?php if (!empty($desserts)): ?>
+                    <table class="table table-dark table-hover text-center">
+                        <thead class="text-light">
+                            <tr>
+                                <th scope="col">Item ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price (LKR)</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($desserts as $item): ?>
+                                <tr>
+                                    <td><?= $item['id'] ?></td>
+                                    <td><?= $item['name'] ?></td>
+                                    <td><?= $item['price'] ?></td>
+                                    <td><i class="fas fa-trash-alt text-white" role="button" title="Delete" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"></i></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php else: ?>
+                    <p>No desserts found.</p>
+                <?php endif; ?>
             </div>
         </div>
 
         <!-- Beverages Tab -->
         <div class="tab-pane fade" id="beverages" role="tabpanel">
             <div class="table-responsive">
-                <table class="table table-dark table-hover text-center">
-                    <thead class="text-light">
-                        <tr>
-                            <th scope="col">Item ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Price (LKR)</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Add beverage items here -->
-                    </tbody>
-                </table>
+                <?php if (!empty($beverages)): ?>
+                    <table class="table table-dark table-hover text-center">
+                        <thead class="text-light">
+                            <tr>
+                                <th scope="col">Item ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price (LKR)</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($beverages as $item): ?>
+                                <tr>
+                                    <td><?= $item['id'] ?></td>
+                                    <td><?= $item['name'] ?></td>
+                                    <td><?= $item['price'] ?></td>
+                                    <td><i class="fas fa-trash-alt text-white" role="button" title="Delete" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"></i></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php else: ?>
+                    <p>No Beverages found.</p>
+                <?php endif; ?>
             </div>
         </div>
     </div>
