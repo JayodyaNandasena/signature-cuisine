@@ -20,22 +20,16 @@ require(__DIR__ .'\..\partials\nav.php')
                 </thead>
                 <tbody id="reservationTable">
                     <?php foreach ($queries as $query): ?>
-                        <tr data-bs-toggle="modal" data-bs-target="#reservationModal" onclick="loadReservationDetails(this)">
+                        <tr
+                            data-bs-toggle="modal"
+                            data-bs-target="#queryModal"
+                            onclick="loadQueryDetails(this)"
+                            data-id="<?= $query['id'] ?>"
+                        >
                             <td><?= $query['id'] ?></td>
                             <td><?= $query['date'] ?></td>
                             <td><?= $query['senderName'] ?></td>
                             <td><?= $query['subject'] ?></td>
-                            <!-- Hidden data for modal -->
-                            <td hidden class="full-data">
-                                {
-                                "id": "Q12345",
-                                "date": "2025-06-20",
-                                "name": "John Doe",
-                                "email": "john@example.com",
-                                "heading": "Detailed Menu",
-                                "message": "Detailed menu is needed with portion sizes"
-                                }
-                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -47,75 +41,86 @@ require(__DIR__ .'\..\partials\nav.php')
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
+<div class="modal fade" id="queryModal" tabindex="-1" aria-labelledby="queryModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content rounded-4 shadow-lg" style="background-color: #2c2c2c; color: #fff;">
-            <div class="modal-header border-bottom border-accent">
-                <h3 class="modal-title accent" id="reservationModalLabel">
+        <div class="modal-content rounded-4 shadow-lg border-0" style="background-color: #2c2c2c; color: #fff;">
+
+            <!-- Header -->
+            <div class="modal-header border-bottom border-accent px-4 py-3">
+                <h3 class="modal-title accent fw-semibold mb-0" id="queryModalLabel">
                     <i class="fas fa-receipt me-2"></i>Query Overview
                 </h3>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body px-4 pt-4 pb-2">
 
-                <!-- Reservation Info Card -->
-                <div class="mb-4 p-3 rounded-3" style="background-color: #1f1f1f;">
-                    <h6 class="accent mb-3">
-                        Query Details
-                    </h6>
-                    <div class="row">
-                        <div class="col-md-6"><p class="mb-1"><strong>ID:</strong> <span id="r-id"></span></p></div>
-                        <div class="col-md-6"><p class="mb-1"><strong>Date:</strong> <span id="r-date"></span></p></div>
-                    </div>
-                </div>
+            <!-- Body -->
+            <div class="modal-body px-4 pt-4 pb-3">
 
-                <!-- Sender Info Section -->
-                <div class="mb-4 p-3 rounded-3" style="background-color: #1f1f1f;">
-                    <h6 class="accent mb-3">
-                        Sender Information
-                    </h6>
-                    <div class="row">
-                        <div class="col-md-6"><p class="mb-1"><strong>Name:</strong> <span id="r-name"></span></p></div>
-                        <div class="col-md-6"><p class="mb-1"><strong>Email:</strong> <span id="r-email"></span></p>
+                <!-- Query Details -->
+                <div class="mb-4 p-4 rounded-3" style="background-color: #1f1f1f;">
+                    <h5 class="accent mb-3">Query Details</h5>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <div class="me-2 fw-semibold" style="min-width: 45px;">ID:</div>
+                                <div><span id="r-id"></span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <div class="me-2 fw-semibold" style="min-width: 45px;">Date:</div>
+                                <div><span id="r-date"></span></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Detailed Query Section -->
-                <div class="mb-3 p-3 rounded-3" style="background-color: #1f1f1f;">
-                    <h6 class="accent mb-2">
-                        Query
-                    </h6>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p class="mb-1"><strong>Subject:</strong></p>
-                            <p class="mb-4" id="r-heading"></p>
+                <!-- Sender Information -->
+                <div class="mb-4 p-4 rounded-3" style="background-color: #1f1f1f;">
+                    <h5 class="accent mb-3">Sender Information</h5>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <div class="me-2 fw-semibold" style="min-width: 45px;">Name:</div>
+                                <div><span id="r-name"></span></div>
+                            </div>
                         </div>
-                        <div class="col-md-12">
-                            <p class="mb-1"><strong>Message:</strong></p>
-                            <p class="mb-4" id="r-message"></p>
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <div class="me-2 fw-semibold" style="min-width: 45px;">Email:</div>
+                                <div><span id="r-email"></span></div>
+                            </div>
                         </div>
-
                     </div>
                 </div>
 
-                <!-- Reply Section -->
-                <div class="mb-3 p-3 rounded-3" style="background-color: #1f1f1f;">
-                    <h6 class="accent mb-2">Your Reply</h6>
+                <!-- Query Content -->
+                <div class="mb-4 p-4 rounded-3" style="background-color: #1f1f1f;">
+                    <h5 class="accent mb-3">Query</h5>
                     <div class="mb-3">
-                        <textarea class="form-control" id="replyMessage" rows="4"
-                                  placeholder="Type your reply here..."></textarea>
+                        <div class="fw-semibold mb-1">Subject:</div>
+                        <p class="mb-0" id="r-heading"></p>
                     </div>
+                    <div>
+                        <div class="fw-semibold mb-1">Message:</div>
+                        <p class="mb-0" id="r-message"></p>
+                    </div>
+                </div>
+
+                <!-- Reply Box -->
+                <div class="mb-3 p-4 rounded-3" style="background-color: #1f1f1f;">
+                    <h5 class="accent mb-3">Your Reply</h5>
+                    <textarea class="form-control mb-3" id="replyMessage" rows="4" placeholder="Type your reply here..."></textarea>
                     <div class="text-end">
                         <button class="btn btn-accent px-4" onclick="sendReply()">
                             <i class="fas fa-paper-plane me-2"></i>Send Reply
                         </button>
                     </div>
                 </div>
-
             </div>
-            <div class="modal-footer border-top border-accent">
+
+            <!-- Footer -->
+            <div class="modal-footer border-top border-accent py-3">
                 <button type="button" class="btn btn-accent px-4" data-bs-dismiss="modal">
                     <i class="fas fa-times me-2"></i>Close
                 </button>
@@ -124,15 +129,25 @@ require(__DIR__ .'\..\partials\nav.php')
     </div>
 </div>
 
+
 <script>
-    function loadReservationDetails(row) {
-        const data = JSON.parse(row.querySelector(".full-data").innerText);
-        document.getElementById("r-id").innerText = data.id;
-        document.getElementById("r-date").innerText = data.date;
-        document.getElementById("r-name").innerText = data.name;
-        document.getElementById("r-email").innerText = data.email;
-        document.getElementById("r-heading").innerText = data.heading;
-        document.getElementById("r-message").innerText = data.message;
+    function loadQueryDetails(row) {
+        const queryId = row.getAttribute('data-id');
+
+        fetch(`/signature-cuisine/controllers/api/getQueryDetails.php?id=${queryId}`)
+            .then(response => response.json())
+            .then(data => {
+                // Populate modal with the query data
+                document.getElementById("r-id").innerText = data.id;
+                document.getElementById("r-date").innerText = data.date;
+                document.getElementById("r-name").innerText = data.senderName;
+                document.getElementById("r-email").innerText = data.email;
+                document.getElementById("r-heading").innerText = data.subject;
+                document.getElementById("r-message").innerText = data.message;
+            })
+            .catch(error => {
+                console.error("Failed to load query details:", error);
+            });
     }
 </script>
 
