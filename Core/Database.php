@@ -64,7 +64,6 @@ class Database
         $result = $this->find();
 
         if (!$result) {
-            // You can customize this abort function
             http_response_code(404);
             die("Record not found");
         }

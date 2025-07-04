@@ -15,45 +15,38 @@ require(__DIR__ .'\..\partials\nav.php')
     </div>
 
     <div class="table-responsive">
-        <table class="table table-dark table-hover text-center">
-            <thead class="text-light">
-            <tr>
-                <th scope="col">Staff ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Mobile</th>
-                <th scope="col">Branch</th>
-                <th scope="col"></th>
-            </tr>
-            </thead>
-            <tbody id="reservationTable">
-            <tr>
-                <td>U12345</td>
-                <td>John Doe</td>
-                <td>120 000 000</td>
-                <td>Peradeniya</td>
-                <td>
-                    <i class="fas fa-trash-alt text-white"
-                       role="button"
-                       title="Delete"
-                       data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
-                    </i>
-                </td>
-            </tr>
-            <tr>
-                <td>U12345</td>
-                <td>Jane Robinson</td>
-                <td>112 000 000</td>
-                <td>Kurunegala</td>
-                <td>
-                    <i class="fas fa-trash-alt text-white"
-                       role="button"
-                       title="Delete"
-                       data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
-                    </i>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <?php if (!empty($users)): ?>
+            <table class="table table-dark table-hover text-center">
+                <thead class="text-light">
+                <tr>
+                    <th scope="col">Staff ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Branch</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody id="reservationTable">
+                    <?php foreach ($users as $user): ?>
+                        <tr>
+                            <td><?= $user['id'] ?></td>
+                            <td><?= $user['firstName']. ' ' . $user['lastName']?></td>
+                            <td><?= $user['mobile'] ?></td>
+                            <td><?= $user['branchName'] ?></td>
+                            <td>
+                                <i class="fas fa-trash-alt text-white"
+                                   role="button"
+                                   title="Delete"
+                                   data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
+                                </i>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php else: ?>
+            <p>No users found.</p>
+        <?php endif; ?>
     </div>
 </div>
 
