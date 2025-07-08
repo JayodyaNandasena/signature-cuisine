@@ -109,16 +109,24 @@ require(__DIR__ . '\..\partials\nav.php')
                 </div>
 
                 <!-- Reply Box -->
-                <div class="mb-3 p-4 rounded-3" style="background-color: #1f1f1f;">
-                    <h5 class="accent mb-3">Your Reply</h5>
-                    <textarea class="form-control mb-3" id="replyMessage" rows="4"
-                              placeholder="Type your reply here..."></textarea>
-                    <div class="text-end">
-                        <button class="btn btn-accent px-4" onclick="sendReply()">
-                            <i class="fas fa-paper-plane me-2"></i>Send Reply
-                        </button>
+                <form action="/signature-cuisine/controllers/queries/reply.php" method="POST">
+                    <div class="mb-3 p-4 rounded-3" style="background-color: #1f1f1f;">
+                        <h5 class="accent mb-3">Your Reply</h5>
+                        <input type="hidden" name="id" id="q-id-hidden">
+                        <textarea
+                                class="form-control mb-3"
+                                name="reply"
+                                id="replyMessage"
+                                rows="4"
+                                placeholder="Type your reply here..."
+                                required></textarea>
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-accent px-4">
+                                <i class="fas fa-paper-plane me-2"></i>Send Reply
+                            </button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
 
             <!-- Footer -->
@@ -141,6 +149,7 @@ require(__DIR__ . '\..\partials\nav.php')
             .then(data => {
                 // Populate modal with the query data
                 document.getElementById("r-id").innerText = data.id;
+                document.getElementById("q-id-hidden").value = data.id;
                 document.getElementById("r-date").innerText = data.date;
                 document.getElementById("r-name").innerText = data.senderName;
                 document.getElementById("r-email").innerText = data.email;
