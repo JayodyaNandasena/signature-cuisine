@@ -64,7 +64,7 @@
                                     <h3 class="mb-4">Experience the Taste of Elegance</h3>
                                     <p>Ready to indulge in an unforgettable dining experience? Book your table now and enjoy our chef's finest creations in a warm and inviting atmosphere.</p>
                                     <p>It can be a romantic dinner, a family gathering, or a special celebration with friends. Make your reservation today to secure your preferred time and setting.</p>
-                                    <a href="reservation.php" class="btn btn-primary">Make a Reservation</a>
+                                    <a href="../controllers/reservation.php" class="btn btn-primary">Make a Reservation</a>
                                 </div>
                             </div>
                         </div>

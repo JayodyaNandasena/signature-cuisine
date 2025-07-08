@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../../Core/Database.php';
-use Core\Database;
+use Core\database;
 
 header('Content-Type: application/json');
 
@@ -13,7 +13,7 @@ if (!isset($_GET['id'])) {
 $id = $_GET['id'];
 
 try {
-    $pdo = Database::getInstance()->getConnection();
+    $pdo = database::getInstance()->getConnection();
 
     $stmt = $pdo->prepare(
         "SELECT id, senderName, email, subject, message, DATE(date) AS date
@@ -32,5 +32,5 @@ try {
 
 } catch (Exception $e) {
     http_response_code(500);
-    echo json_encode(['error' => 'Database error']);
+    echo json_encode(['error' => 'database error']);
 }

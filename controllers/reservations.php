@@ -1,11 +1,11 @@
 <?php
 require_once __DIR__ . '/../Core/Database.php';
 
-use Core\Database;
+use Core\database;
 
 try {
     // Get database instance
-    $db = Database::getInstance();
+    $db = database::getInstance();
 
     // Fetch all reservations
     $reservations = $db->query(
@@ -17,7 +17,7 @@ try {
 
 } catch (Exception $e) {
     // Handle errors
-    error_log("Database error: " . $e->getMessage());
+    error_log("database error: " . $e->getMessage());
     $reservations = [];
     $error = "Unable to fetch reservations. Please try again later.";
 }

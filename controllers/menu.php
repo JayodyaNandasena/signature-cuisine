@@ -2,11 +2,11 @@
 
 require_once __DIR__ . '/../Core/Database.php';
 
-use Core\Database;
+use Core\database;
 
 try {
     // Get database instance
-    $db = Database::getInstance();
+    $db = database::getInstance();
 
     // Fetch all menu items
     $all = $db->query("SELECT id, name, price, category FROM food ORDER BY id ASC")->get();
@@ -22,7 +22,7 @@ try {
 
 } catch (Exception $e) {
     // Handle errors
-    error_log("Database error: " . $e->getMessage());
+    error_log("database error: " . $e->getMessage());
     $all = [];
     $mains = [];
     $desserts = [];

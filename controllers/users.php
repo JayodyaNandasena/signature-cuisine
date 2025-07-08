@@ -1,11 +1,11 @@
 <?php
 require_once __DIR__ . '/../Core/Database.php';
 
-use Core\Database;
+use Core\database;
 
 try {
     // Get database instance
-    $db = Database::getInstance();
+    $db = database::getInstance();
 
     // Fetch all users
     $users = $db->query(
@@ -18,7 +18,7 @@ try {
 
 } catch (Exception $e) {
     // Handle errors
-    error_log("Database error: " . $e->getMessage());
+    error_log("database error: " . $e->getMessage());
     $users = [];
     $error = "Unable to fetch users. Please try again later.";
 }
