@@ -1,7 +1,7 @@
 <?php
 $page_css = 'details';
-require(__DIR__ .'\..\partials\head.php');
-require(__DIR__ .'\..\partials\nav.php');
+require(__DIR__ . '\..\partials\head.php');
+require(__DIR__ . '\..\partials\nav.php');
 ?>
 
 <div class="container py-5 details-section">
@@ -27,21 +27,21 @@ require(__DIR__ .'\..\partials\nav.php');
                 </tr>
                 </thead>
                 <tbody id="reservationTable">
-                    <?php foreach ($users as $user): ?>
-                        <tr>
-                            <td><?= $user['id'] ?></td>
-                            <td><?= $user['firstName']. ' ' . $user['lastName']?></td>
-                            <td><?= $user['mobile'] ?></td>
-                            <td><?= $user['branchName'] ?></td>
-                            <td>
-                                <i class="fas fa-trash-alt text-white"
-                                   role="button"
-                                   title="Delete"
-                                   data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
-                                </i>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
+                <?php foreach ($users as $user): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($user['id']) ?></td>
+                        <td><?= htmlspecialchars($user['firstName']) . ' ' . htmlspecialchars($user['lastName']) ?></td>
+                        <td><?= htmlspecialchars($user['mobile']) ?></td>
+                        <td><?= htmlspecialchars($user['branchName']) ?></td>
+                        <td>
+                            <i class="fas fa-trash-alt text-white"
+                               role="button"
+                               title="Delete"
+                               data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
+                            </i>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
                 </tbody>
             </table>
         <?php else: ?>
@@ -58,7 +58,8 @@ require(__DIR__ .'\..\partials\nav.php');
                 <h3 class="modal-title text-danger" id="confirmDeleteLabel">
                     <i class="fas fa-exclamation-triangle me-2"></i>Confirm Delete
                 </h3>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 Are you sure you want to delete this user?
@@ -79,7 +80,8 @@ require(__DIR__ .'\..\partials\nav.php');
                 <h3 class="modal-title accent" id="reservationModalLabel">
                     <i class="fas fa-user-plus me-2"></i>Add New User
                 </h3>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
             </div>
 
             <div class="modal-body px-4 pt-4 pb-2">

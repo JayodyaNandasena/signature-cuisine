@@ -1,7 +1,7 @@
 <?php
 $page_css = 'details';
-require(__DIR__ .'\..\partials\head.php');
-require(__DIR__ .'\..\partials\nav.php')
+require(__DIR__ . '\..\partials\head.php');
+require(__DIR__ . '\..\partials\nav.php')
 ?>
 
 <div class="container py-5 details-section">
@@ -11,35 +11,35 @@ require(__DIR__ .'\..\partials\nav.php')
         <?php if (!empty($reservations)): ?>
             <table class="table table-dark table-hover text-center">
                 <thead class="table-dark text-dark">
-                    <tr>
-                        <th scope="col">Reservation ID</th>
-                        <th scope="col">Party Size</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Time</th>
-                        <th scope="col">Special Requests</th>
-                    </tr>
+                <tr>
+                    <th scope="col">Reservation ID</th>
+                    <th scope="col">Party Size</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Special Requests</th>
+                </tr>
                 </thead>
                 <tbody id="reservationTable">
-                    <?php foreach ($reservations as $reservation): ?>
-                        <tr
+                <?php foreach ($reservations as $reservation): ?>
+                    <tr
                             data-bs-toggle="modal"
                             data-bs-target="#reservationModal"
                             onclick="loadReservationDetails(this)"
                             data-id="<?= $reservation['id'] ?>"
-                        >
-                            <td><?= $reservation['id'] ?></td>
-                            <td><?= $reservation['guestCount'] ?></td>
-                            <td><?= $reservation['date'] ?></td>
-                            <td><?= date("g:i A", strtotime($reservation['time'])) ?></td>
-                            <td>
-                                <?php if (!empty($reservation['note'])): ?>
-                                    <?= $reservation['note'] ?>
-                                <?php else: ?>
-                                    -
-                                <?php endif; ?>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
+                    >
+                        <td><?= htmlspecialchars($reservation['id']) ?></td>
+                        <td><?= htmlspecialchars($reservation['guestCount']) ?></td>
+                        <td><?= htmlspecialchars($reservation['date']) ?></td>
+                        <td><?= date("g:i A", strtotime($reservation['time'])) ?></td>
+                        <td>
+                            <?php if (!empty($reservation['note'])): ?>
+                                <?= htmlspecialchars($reservation['note']) ?>
+                            <?php else: ?>
+                                -
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
                 </tbody>
             </table>
         <?php else: ?>
@@ -57,7 +57,8 @@ require(__DIR__ .'\..\partials\nav.php')
                 <h3 class="modal-title accent fw-semibold mb-0" id="reservationModalLabel">
                     <i class="fas fa-receipt me-2"></i>Reservation Overview
                 </h3>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
             </div>
 
             <!-- Body -->
@@ -149,28 +150,28 @@ require(__DIR__ .'\..\partials\nav.php')
 
 
 <script>
-function loadReservationDetails(row) {
-    const reservationId = row.getAttribute('data-id');
+    function loadReservationDetails(row) {
+        const reservationId = row.getAttribute('data-id');
 
-    fetch(`/signature-cuisine/controllers/api/getReservationDetails.php?id=${reservationId}`)
-        .then(response => response.json())
-        .then(data => {
-            // Populate modal with the reservation data
-            document.getElementById("r-id").innerText = data.id;
-            document.getElementById("r-restaurant").innerText = data.branchName;
-            document.getElementById("r-guests").innerText = data.guestCount;
-            document.getElementById("r-date").innerText = data.date;
-            document.getElementById("r-time").innerText = data.time;
-            document.getElementById("r-fname").innerText = data.firstName;
-            document.getElementById("r-lname").innerText = data.lastName;
-            document.getElementById("r-email").innerText = data.email;
-            document.getElementById("r-phone").innerText = data.phone;
-            document.getElementById("r-requests").innerText = data.notes || "-";
-        })
-        .catch(error => {
-            console.error("Failed to load reservation details:", error);
-        });
-}
+        fetch(`/signature-cuisine/controllers/api/getReservationDetails.php?id=${reservationId}`)
+            .then(response => response.json())
+            .then(data => {
+                // Populate modal with the reservation data
+                document.getElementById("r-id").innerText = data.id;
+                document.getElementById("r-restaurant").innerText = data.branchName;
+                document.getElementById("r-guests").innerText = data.guestCount;
+                document.getElementById("r-date").innerText = data.date;
+                document.getElementById("r-time").innerText = data.time;
+                document.getElementById("r-fname").innerText = data.firstName;
+                document.getElementById("r-lname").innerText = data.lastName;
+                document.getElementById("r-email").innerText = data.email;
+                document.getElementById("r-phone").innerText = data.phone;
+                document.getElementById("r-requests").innerText = data.notes || "-";
+            })
+            .catch(error => {
+                console.error("Failed to load reservation details:", error);
+            });
+    }
 </script>
 
 <script src="/signature-cuisine/assets/js/vendor/jquery-1.11.2.min.js"></script>

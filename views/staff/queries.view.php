@@ -1,7 +1,7 @@
 <?php
 $page_css = 'details';
-require(__DIR__ .'\..\partials\head.php');
-require(__DIR__ .'\..\partials\nav.php')
+require(__DIR__ . '\..\partials\head.php');
+require(__DIR__ . '\..\partials\nav.php')
 ?>
 
 <div class="container py-5 details-section">
@@ -11,27 +11,27 @@ require(__DIR__ .'\..\partials\nav.php')
         <?php if (!empty($queries)): ?>
             <table class="table table-dark table-hover text-center">
                 <thead class="table-dark text-dark">
-                    <tr>
-                        <th scope="col">Query ID</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Sender</th>
-                        <th scope="col">Subject</th>
-                    </tr>
+                <tr>
+                    <th scope="col">Query ID</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Sender</th>
+                    <th scope="col">Subject</th>
+                </tr>
                 </thead>
                 <tbody id="reservationTable">
-                    <?php foreach ($queries as $query): ?>
-                        <tr
+                <?php foreach ($queries as $query): ?>
+                    <tr
                             data-bs-toggle="modal"
                             data-bs-target="#queryModal"
                             onclick="loadQueryDetails(this)"
-                            data-id="<?= $query['id'] ?>"
-                        >
-                            <td><?= $query['id'] ?></td>
-                            <td><?= $query['date'] ?></td>
-                            <td><?= $query['senderName'] ?></td>
-                            <td><?= $query['subject'] ?></td>
-                        </tr>
-                    <?php endforeach; ?>
+                            data-id="<?= htmlspecialchars($query['id']) ?>"
+                    >
+                        <td><?= htmlspecialchars($query['id']) ?></td>
+                        <td><?= htmlspecialchars($query['date']) ?></td>
+                        <td><?= htmlspecialchars($query['senderName']) ?></td>
+                        <td><?= htmlspecialchars($query['subject']) ?></td>
+                    </tr>
+                <?php endforeach; ?>
                 </tbody>
             </table>
         <?php else: ?>
@@ -50,7 +50,8 @@ require(__DIR__ .'\..\partials\nav.php')
                 <h3 class="modal-title accent fw-semibold mb-0" id="queryModalLabel">
                     <i class="fas fa-receipt me-2"></i>Query Overview
                 </h3>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
             </div>
 
             <!-- Body -->
@@ -110,7 +111,8 @@ require(__DIR__ .'\..\partials\nav.php')
                 <!-- Reply Box -->
                 <div class="mb-3 p-4 rounded-3" style="background-color: #1f1f1f;">
                     <h5 class="accent mb-3">Your Reply</h5>
-                    <textarea class="form-control mb-3" id="replyMessage" rows="4" placeholder="Type your reply here..."></textarea>
+                    <textarea class="form-control mb-3" id="replyMessage" rows="4"
+                              placeholder="Type your reply here..."></textarea>
                     <div class="text-end">
                         <button class="btn btn-accent px-4" onclick="sendReply()">
                             <i class="fas fa-paper-plane me-2"></i>Send Reply

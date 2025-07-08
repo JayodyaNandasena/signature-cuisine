@@ -1,7 +1,7 @@
 <?php
 $page_css = 'details';
-require(__DIR__ .'\..\partials\head.php');
-require(__DIR__ .'\..\partials\nav.php')
+require(__DIR__ . '\..\partials\head.php');
+require(__DIR__ . '\..\partials\nav.php')
 ?>
 
 <div class="container py-5 details-section">
@@ -15,16 +15,24 @@ require(__DIR__ .'\..\partials\nav.php')
     <!-- Tabs Navigation -->
     <ul class="nav nav-tabs mb-4" id="menuTabs" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab">All</button>
+            <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button"
+                    role="tab">All
+            </button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="mains-tab" data-bs-toggle="tab" data-bs-target="#mains" type="button" role="tab">Mains</button>
+            <button class="nav-link" id="mains-tab" data-bs-toggle="tab" data-bs-target="#mains" type="button"
+                    role="tab">Mains
+            </button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="desserts-tab" data-bs-toggle="tab" data-bs-target="#desserts" type="button" role="tab">Desserts</button>
+            <button class="nav-link" id="desserts-tab" data-bs-toggle="tab" data-bs-target="#desserts" type="button"
+                    role="tab">Desserts
+            </button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="beverages-tab" data-bs-toggle="tab" data-bs-target="#beverages" type="button" role="tab">Beverages</button>
+            <button class="nav-link" id="beverages-tab" data-bs-toggle="tab" data-bs-target="#beverages" type="button"
+                    role="tab">Beverages
+            </button>
         </li>
     </ul>
 
@@ -36,24 +44,25 @@ require(__DIR__ .'\..\partials\nav.php')
                 <?php if (!empty($all)): ?>
                     <table class="table table-dark table-hover text-center">
                         <thead class="text-light">
-                            <tr>
-                                <th scope="col">Item ID</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Category</th>
-                                <th scope="col">Price (LKR)</th>
-                                <th scope="col"></th>
-                            </tr>
+                        <tr>
+                            <th scope="col">Item ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Price (LKR)</th>
+                            <th scope="col"></th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($all as $item): ?>
-                                <tr>
-                                    <td><?= htmlspecialchars($item['id']) ?></td>
-                                    <td><?= htmlspecialchars($item['name']) ?></td>
-                                    <td><?= htmlspecialchars($item['category']) ?></td>
-                                    <td><?= htmlspecialchars($item['price']) ?></td>
-                                    <td><i class="fas fa-trash-alt text-white" role="button" title="Delete" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"></i></td>
-                                </tr>
-                            <?php endforeach; ?>
+                        <?php foreach ($all as $item): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($item['id']) ?></td>
+                                <td><?= htmlspecialchars($item['name']) ?></td>
+                                <td><?= htmlspecialchars($item['category']) ?></td>
+                                <td><?= htmlspecialchars($item['price']) ?></td>
+                                <td><i class="fas fa-trash-alt text-white" role="button" title="Delete"
+                                       data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"></i></td>
+                            </tr>
+                        <?php endforeach; ?>
                         </tbody>
                     </table>
                 <?php else: ?>
@@ -68,22 +77,23 @@ require(__DIR__ .'\..\partials\nav.php')
                 <?php if (!empty($mains)): ?>
                     <table class="table table-dark table-hover text-center">
                         <thead class="text-light">
-                            <tr>
-                                <th scope="col">Item ID</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Price (LKR)</th>
-                                <th scope="col"></th>
-                            </tr>
+                        <tr>
+                            <th scope="col">Item ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price (LKR)</th>
+                            <th scope="col"></th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($mains as $item): ?>
-                                <tr>
-                                    <td><?= $item['id'] ?></td>
-                                    <td><?= $item['name'] ?></td>
-                                    <td><?= $item['price'] ?></td>
-                                    <td><i class="fas fa-trash-alt text-white" role="button" title="Delete" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"></i></td>
-                                </tr>
-                            <?php endforeach; ?>
+                        <?php foreach ($mains as $item): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($item['id']) ?></td>
+                                <td><?= htmlspecialchars($item['name']) ?></td>
+                                <td><?= htmlspecialchars($item['price']) ?></td>
+                                <td><i class="fas fa-trash-alt text-white" role="button" title="Delete"
+                                       data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"></i></td>
+                            </tr>
+                        <?php endforeach; ?>
                         </tbody>
                     </table>
                 <?php else: ?>
@@ -98,22 +108,23 @@ require(__DIR__ .'\..\partials\nav.php')
                 <?php if (!empty($desserts)): ?>
                     <table class="table table-dark table-hover text-center">
                         <thead class="text-light">
-                            <tr>
-                                <th scope="col">Item ID</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Price (LKR)</th>
-                                <th scope="col"></th>
-                            </tr>
+                        <tr>
+                            <th scope="col">Item ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price (LKR)</th>
+                            <th scope="col"></th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($desserts as $item): ?>
-                                <tr>
-                                    <td><?= $item['id'] ?></td>
-                                    <td><?= $item['name'] ?></td>
-                                    <td><?= $item['price'] ?></td>
-                                    <td><i class="fas fa-trash-alt text-white" role="button" title="Delete" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"></i></td>
-                                </tr>
-                            <?php endforeach; ?>
+                        <?php foreach ($desserts as $item): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($item['id']) ?></td>
+                                <td><?= htmlspecialchars($item['name']) ?></td>
+                                <td><?= htmlspecialchars($item['price']) ?></td>
+                                <td><i class="fas fa-trash-alt text-white" role="button" title="Delete"
+                                       data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"></i></td>
+                            </tr>
+                        <?php endforeach; ?>
                         </tbody>
                     </table>
                 <?php else: ?>
@@ -128,22 +139,23 @@ require(__DIR__ .'\..\partials\nav.php')
                 <?php if (!empty($beverages)): ?>
                     <table class="table table-dark table-hover text-center">
                         <thead class="text-light">
-                            <tr>
-                                <th scope="col">Item ID</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Price (LKR)</th>
-                                <th scope="col"></th>
-                            </tr>
+                        <tr>
+                            <th scope="col">Item ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price (LKR)</th>
+                            <th scope="col"></th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($beverages as $item): ?>
-                                <tr>
-                                    <td><?= $item['id'] ?></td>
-                                    <td><?= $item['name'] ?></td>
-                                    <td><?= $item['price'] ?></td>
-                                    <td><i class="fas fa-trash-alt text-white" role="button" title="Delete" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"></i></td>
-                                </tr>
-                            <?php endforeach; ?>
+                        <?php foreach ($beverages as $item): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($item['id']) ?></td>
+                                <td><?= htmlspecialchars($item['name']) ?></td>
+                                <td><?= htmlspecialchars($item['price']) ?></td>
+                                <td><i class="fas fa-trash-alt text-white" role="button" title="Delete"
+                                       data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"></i></td>
+                            </tr>
+                        <?php endforeach; ?>
                         </tbody>
                     </table>
                 <?php else: ?>
@@ -163,7 +175,8 @@ require(__DIR__ .'\..\partials\nav.php')
                 <h3 class="modal-title text-danger" id="confirmDeleteLabel">
                     <i class="fas fa-exclamation-triangle me-2"></i>Confirm Delete
                 </h3>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 Are you sure you want to delete this menu item?
@@ -184,7 +197,8 @@ require(__DIR__ .'\..\partials\nav.php')
                 <h3 class="modal-title accent" id="reservationModalLabel">
                     <i class="fas fa-receipt me-2"></i>Add New Menu Item
                 </h3>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
             </div>
             <div class="modal-body px-4 pt-4 pb-2">
                 <form id="reservationForm" action="" method="post">
