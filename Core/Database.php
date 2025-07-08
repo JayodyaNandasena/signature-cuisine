@@ -4,33 +4,34 @@ namespace Core;
 use PDO;
 use PDOException;
 
-class Database
+class database
 {
     private static $instance = null;
     private $connection;
     private $statement;
-
-    private $host = 'localhost';
-    private $username = 'root';
-    private $password = '1234';
-    private $database = 'signature_cuisine';
+    private $config;
 
     // Private constructor to prevent direct instantiation
     private function __construct() {
+        $this->config = require_once __DIR__ . '/../assets/config/config.php';
+
         try {
-            $dsn = "mysql:host={$this->host};dbname={$this->database};charset=utf8mb4";
-            $this->connection = new PDO($dsn, $this->username, $this->password, [
+            $dbConfig = $this->config['database'];
+            $dsn = "mysql:host={$dbConfig['host']};dbname={$dbConfig['dbname']};charset={$dbConfig['charset']}";
+
+            $this->connection = new PDO($dsn, $dbConfig['username'], $dbConfig['password'], [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                 PDO::ATTR_EMULATE_PREPARES => false
             ]);
         } catch (PDOException $e) {
-            die("Database connection failed: " . $e->getMessage());
+            die("database connection failed: " . $e->getMessage());
         }
     }
 
     // Get the singleton instance
-    public static function getInstance() {
+    public static function getInstance(): ?database
+    {
         if (self::$instance === null) {
             self::$instance = new self();
         }
@@ -38,11 +39,12 @@ class Database
     }
 
     // Get the PDO connection
-    public function getConnection() {
+    public function getConnection(): PDO
+    {
         return $this->connection;
     }
 
-    public function query($query, $params = [])
+    public function query($query, $params = []): database
     {
         $this->statement = $this->connection->prepare($query);
         $this->statement->execute($params);

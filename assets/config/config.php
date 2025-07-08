@@ -1,8 +1,16 @@
 <?php
 
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '1234');
-define('DB_NAME', 'signature_cuisine');
-define('SQL_FILE_PATH', __DIR__ . '\restaurantdb.txt');
-define('SETUP_FLAG_FILE', __DIR__ . '\setup_completed.flag');
+return [
+    'database' => [
+        'host' => 'localhost',
+        'port' => 3306,
+        'dbname' => 'signature_cuisine',
+        'charset' => 'utf8mb4',
+        'username' => 'root',
+        'password' => '1234'
+    ],
+    'paths' => [
+        'sql_file' => __DIR__ . '/../sql/restaurantdb.txt',
+        'setup_flag' => __DIR__ . '/../../setup/setup_completed.flag'
+    ]
+];
