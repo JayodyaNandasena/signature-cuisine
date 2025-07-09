@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/../Core/Database.php';
-require_once __DIR__ . '/../Core/Validator.php';
+require_once __DIR__ . '/../../Core/Database.php';
+require_once __DIR__ . '/../../Core/Validator.php';
 
 use Core\Validator;
 use Core\Database;
@@ -21,8 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (!empty($errors)) {
-        // Render form with errors
-        require(__DIR__ . '/../views/login.view.php');
+        header('Location: ../login.php');
         exit;
     }
 
@@ -31,18 +30,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $db->query('SELECT * FROM account WHERE email = :email AND password = :password', [
         'email' => $email,
         'password' => $password
-    ])->find();
+    ])->find(); // Assuming `find()` fetches one row as an associative array
 
     if ($user) {
         // Login successful
-        header('Location: ../controllers/home.php');
+        header('Location: ../home.php');
+        exit;
     } else {
         // Login failed
-        $errors['failed'] = 'Invalid email or password.';
-        require(__DIR__ . '/../views/login.view.php');
+        header('Location: ../login.php?error=invalid_credentials');
+        exit;
     }
-    exit;
 } else {
-    // First time visit (GET request)
-    require(__DIR__ . '/../views/login.view.php');
+    echo "<p style='color: red;'>Invalid request method.</p>";
 }
