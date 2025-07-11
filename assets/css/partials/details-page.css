@@ -89,6 +89,10 @@ h3 {
     background-color: var(--card-bg);
     color: white;
     position: relative;
+    z-index: 900;
+}
+
+.alert {
     z-index: 1000;
 }
 

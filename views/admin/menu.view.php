@@ -7,7 +7,7 @@ require(__DIR__ . '\..\partials\nav.php')
 <div class="container py-5 details-section">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="accent">Our Menu</h2>
-        <button class="btn btn-accent" data-bs-toggle="modal" data-bs-target="#reservationModal">
+        <button class="btn btn-accent" data-bs-toggle="modal" data-bs-target="#newMenuModal">
             <i class="fas fa-plus me-2"></i>New Item
         </button>
     </div>
@@ -190,40 +190,43 @@ require(__DIR__ . '\..\partials\nav.php')
 </div>
 
 <!-- Add New Item Modal -->
-<div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
+<div class="modal fade" id="newMenuModal" tabindex="-1" aria-labelledby="newMenuModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content rounded-4 shadow-lg">
             <div class="modal-header px-4">
-                <h3 class="modal-title accent" id="reservationModalLabel">
+                <h3 class="modal-title accent" id="newMenuModalLabel">
                     <i class="fas fa-receipt me-2"></i>Add New Menu Item
                 </h3>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
             </div>
             <div class="modal-body px-4 pt-4 pb-2">
-                <form id="reservationForm" action="" method="post">
+                <form id="menuForm" method="POST">
                     <div class="row g-4">
                         <div class="col-md-12">
                             <label for="itemName" class="form-label">
                                 <i class="fas fa-utensils me-2"></i>Name
                             </label>
-                            <input type="text" class="form-control" id="itemName" name="item_name" required>
+                            <input type="text" class="form-control" id="itemName" name="itemName">
+                            <div class="invalid-feedback d-block text-danger" id="itemNameError"></div>
                         </div>
                         <div class="col-md-12">
                             <label for="category" class="form-label">
                                 <i class="fas fa-tags me-2"></i>Category
                             </label>
-                            <select class="form-select" id="category" name="category" required>
+                            <select class="form-select" id="category" name="category">
                                 <option value="main" selected>Main Course</option>
                                 <option value="dessert">Dessert</option>
                                 <option value="beverage">Beverage</option>
                             </select>
+                            <div class="invalid-feedback d-block text-danger" id="categoryError"></div>
                         </div>
                         <div class="col-md-12">
                             <label for="price" class="form-label">
                                 <i class="fas fa-money-bill-wave me-2"></i>Price (LKR)
                             </label>
-                            <input type="number" class="form-control" id="price" name="price" required>
+                            <input type="number" min="0.00" max="10000.00" step="0.01" class="form-control" id="price" name="price">
+                            <div class="invalid-feedback d-block text-danger" id="priceError"></div>
                         </div>
                     </div>
 
@@ -243,10 +246,64 @@ require(__DIR__ . '\..\partials\nav.php')
     </div>
 </div>
 
+<div id="menuAlert" class="position-fixed bottom-0 end-0 px-4 mx-5 alert"></div> <!-- alert for add new menu item form -->
+
 <script src="/signature-cuisine/assets/js/vendor/jquery-1.11.2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/signature-cuisine/assets/js/jquery-easing/jquery.easing.1.3.js"></script>
 <script src="/signature-cuisine/assets/js/wow/wow.min.js"></script>
 <script src="/signature-cuisine/assets/js/main.js"></script>
+
+<script>
+    document.getElementById('menuForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+
+        // Clear previous errors
+        ['itemName', 'category', 'price'].forEach(id => {
+            document.getElementById(id + 'Error').textContent = '';
+            document.getElementById(id).classList.remove('is-invalid');
+        });
+        document.getElementById('menuAlert').innerHTML = '';
+
+        try {
+            const response = await fetch('/signature-cuisine/controllers/api/createMenuItem.php', {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
+
+            if (result.success) {
+                document.getElementById('menuAlert').innerHTML = `
+                <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                    ${result.message ?? 'New menu item added successfully.'}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>`;
+                form.reset(); // Clear the form
+            } else if (result.errors) {
+                for (const key in result.errors) {
+                    const input = document.getElementById(key);
+                    const errorDiv = document.getElementById(key + 'Error');
+                    if (input && errorDiv) {
+                        input.classList.add('is-invalid');
+                        errorDiv.textContent = result.errors[key];
+                    }
+                }
+            } else {
+                throw new Error('Unexpected error');
+            }
+        } catch (err) {
+            document.getElementById('menuAlert').innerHTML = `
+            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                Something went wrong. Please try again later.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>`;
+            console.error(err);
+        }
+    });
+</script>
+
+
 </body>
 </html>
