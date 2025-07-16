@@ -9,7 +9,7 @@ require(__DIR__ . '\..\partials\nav.php');
         <h2 class="accent">
             User Management
         </h2>
-        <button class="btn btn-accent" data-bs-toggle="modal" data-bs-target="#reservationModal">
+        <button class="btn btn-accent" data-bs-toggle="modal" data-bs-target="#staffModal">
             <i class="fas fa-plus me-2"></i>New User
         </button>
     </div>
@@ -73,11 +73,11 @@ require(__DIR__ . '\..\partials\nav.php');
 </div>
 
 <!-- Add New User Modal -->
-<div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
+<div class="modal fade" id="staffModal" tabindex="-1" aria-labelledby="staffModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content rounded-4 shadow-lg">
             <div class="modal-header px-4">
-                <h3 class="modal-title accent" id="reservationModalLabel">
+                <h3 class="modal-title accent" id="staffModalLabel">
                     <i class="fas fa-user-plus me-2"></i>Add New User
                 </h3>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
@@ -85,39 +85,43 @@ require(__DIR__ . '\..\partials\nav.php');
             </div>
 
             <div class="modal-body px-4 pt-4 pb-2">
-                <form id="reservationForm" action="" method="post">
+                <form id="staffForm" method="POST">
                     <!-- Staff Details -->
                     <div class="form-section mb-4">
                         <h5 class="mb-3">Staff Details</h5>
                         <div class="row g-4">
                             <div class="col-md-6">
-                                <label for="fName" class="form-label">
+                                <label for="firstName" class="form-label">
                                     <i class="fas fa-user me-2"></i>First Name
                                 </label>
-                                <input type="text" class="form-control" id="fName" name="first_name" required>
+                                <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                <div class="invalid-feedback d-block text-danger" id="firstNameError"></div>
                             </div>
                             <div class="col-md-6">
-                                <label for="lName" class="form-label">
+                                <label for="lastName" class="form-label">
                                     <i class="fas fa-user me-2"></i>Last Name
                                 </label>
-                                <input type="text" class="form-control" id="lName" name="last_name" required>
+                                <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                <div class="invalid-feedback d-block text-danger" id="lastNameError"></div>
                             </div>
                             <div class="col-md-6">
                                 <label for="branch" class="form-label">
                                     <i class="fas fa-map-marker-alt me-2"></i>Branch
                                 </label>
-                                <select class="form-select" id="branch" name="branch" required>
-                                    <option value="peradeniya" selected>Peradeniya</option>
-                                    <option value="kandy">Kandy</option>
-                                    <option value="colombo">Colombo</option>
-                                    <option value="kurunegala">Kurunegala</option>
+                                <select class="form-select" id="branch" name="branch">
+                                    <option value="1" selected>Peradeniya</option>
+                                    <option value="2">Kandy</option>
+                                    <option value="3">Colombo</option>
+                                    <option value="4">Kurunegala</option>
                                 </select>
+                                <div class="invalid-feedback d-block text-danger" id="branchError"></div>
                             </div>
                             <div class="col-md-6">
-                                <label for="phone" class="form-label">
-                                    <i class="fas fa-phone me-2"></i>Phone Number
+                                <label for="mobile" class="form-label">
+                                    <i class="fas fa-phone me-2"></i>Mobile Number
                                 </label>
-                                <input type="tel" class="form-control" id="phone" name="phone" required>
+                                <input type="tel" class="form-control" id="mobile" name="mobile" required>
+                                <div class="invalid-feedback d-block text-danger" id="mobileError"></div>
                             </div>
                         </div>
                     </div>
@@ -131,12 +135,14 @@ require(__DIR__ . '\..\partials\nav.php');
                                     <i class="fas fa-envelope me-2"></i>Email
                                 </label>
                                 <input type="email" class="form-control" id="email" name="email" required>
+                                <div class="invalid-feedback d-block text-danger" id="emailError"></div>
                             </div>
                             <div class="col-md-6">
                                 <label for="password" class="form-label">
                                     <i class="fas fa-lock me-2"></i>Password
                                 </label>
                                 <input type="password" class="form-control" id="password" name="password" required>
+                                <div class="invalid-feedback d-block text-danger" id="passwordError"></div>
                             </div>
                         </div>
                     </div>
@@ -159,10 +165,73 @@ require(__DIR__ . '\..\partials\nav.php');
     </div>
 </div>
 
+<div id="newStaffAlert" class="position-fixed bottom-0 end-0 px-4 mx-5 alert"></div>
+
 <script src="/signature-cuisine/assets/js/vendor/jquery-1.11.2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/signature-cuisine/assets/js/jquery-easing/jquery.easing.1.3.js"></script>
 <script src="/signature-cuisine/assets/js/wow/wow.min.js"></script>
 <script src="/signature-cuisine/assets/js/main.js"></script>
+
+<script>
+    document.getElementById('staffForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+
+        // Clear previous errors
+        ['firstName', 'lastName', 'mobile', 'branch', 'email', 'password'].forEach(id => {
+            document.getElementById(id + 'Error').textContent = '';
+            document.getElementById(id).classList.remove('is-invalid');
+        });
+        document.getElementById('newStaffAlert').innerHTML = '';
+
+        try {
+            const response = await fetch('/signature-cuisine/controllers/api/createStaff.php', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.status === 409) {
+                // Handle conflict
+                document.getElementById('email').classList.add('is-invalid');
+                document.getElementById('emailError').textContent = 'Email is already used';
+                return;
+            }
+
+            // Status OK
+            const result = await response.json();
+
+            if (result.success) {
+                document.getElementById('newStaffAlert').innerHTML = `
+                <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                    ${result.message ?? 'New user item added successfully.'}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>`;
+                form.reset(); // Clear the form
+            } else if (result.errors) {
+                for (const key in result.errors) {
+                    const input = document.getElementById(key);
+                    const errorDiv = document.getElementById(key + 'Error');
+                    if (input && errorDiv) {
+                        input.classList.add('is-invalid');
+                        errorDiv.textContent = result.errors[key];
+                    }
+                }
+            } else {
+                throw new Error('Unexpected error');
+            }
+        } catch (err) {
+            document.getElementById('newStaffAlert').innerHTML = `
+            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                Something went wrong. Please try again later.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>`;
+
+            console.error(err);
+        }
+    });
+</script>
+
 </body>
 </html>

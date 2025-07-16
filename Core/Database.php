@@ -77,6 +77,10 @@ class database
         return $this->connection->prepare($query);
     }
 
+    public function lastInsertId() {
+        return $this->connection->lastInsertId();
+    }
+
     // Prevent cloning and unserialization
     private function __clone() {}
     public function __wakeup() {}
