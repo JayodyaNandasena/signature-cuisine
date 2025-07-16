@@ -1,5 +1,5 @@
 <?php
-$page_css = isset($page_css) ? $page_css : 'default';
+$page_css = $page_css ?? 'default';
 ?>
 
 <!doctype html>

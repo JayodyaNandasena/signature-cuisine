@@ -136,6 +136,10 @@ body::before {
     font-size: 1.1rem;
 }
 
+.alert {
+    z-index: 1000;
+}
+
 @media (max-width: 768px) {
     .section-header h2 {
         font-size: 2rem;

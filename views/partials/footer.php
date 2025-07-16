@@ -1,3 +1,7 @@
+<?php
+$page_js = $page_js ?? 'default';
+?>
+
 <section id="footer_widget" class="footer_widget">
     <div class="container">
         <div class="row footer_widget_content text-center">
@@ -96,6 +100,7 @@
 <script src="/signature-cuisine/assets/js/main.js"></script>
 
 <script>
+
     document.getElementById('contactForm').addEventListener('submit', async function (e) {
         e.preventDefault();
         const form = e.target;
@@ -143,6 +148,57 @@
             console.error(err);
         }
     });
+
+    <?php if (isset($page_js) && $page_js === 'reservation'): ?>
+    document.getElementById('reservationForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const reservationForm = e.target;
+        const reservationFormData = new FormData(reservationForm);
+
+        // Clear previous errors
+        ['date', 'guestCount', 'notes', 'restaurant', 'firstName', 'lastName', 'email', 'phone'].forEach(id => {
+            document.getElementById(id + 'Error').textContent = '';
+            document.getElementById(id).classList.remove('is-invalid');
+        });
+        document.getElementById('reservationAlert').innerHTML = '';
+
+        try {
+            const response = await fetch('/signature-cuisine/controllers/api/createReservation.php', {
+                method: 'POST',
+                body: reservationFormData
+            });
+            const result = await response.json();
+
+            if (result.success) {
+                document.getElementById('reservationAlert').innerHTML = `
+                <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                    ${result.message ?? 'Reservation added successfully.'}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>`;
+                reservationForm.reset(); // Clear the form
+            } else if (result.errors) {
+                for (const key in result.errors) {
+                    const input = document.getElementById(key);
+                    const errorDiv = document.getElementById(key + 'Error');
+                    if (input && errorDiv) {
+                        input.classList.add('is-invalid');
+                        errorDiv.textContent = result.errors[key];
+                    }
+                }
+            } else {
+                throw new Error('Unexpected error');
+            }
+        } catch (err) {
+            document.getElementById('reservationAlert').innerHTML = `
+            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                Something went wrong. Please try again later.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>`;
+            console.error(err);
+        }
+    });
+
+    <?php endif; ?>
 </script>
 
 </body>

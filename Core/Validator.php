@@ -38,7 +38,7 @@ class Validator
         return self::inArray($value, $allowedValues);
     }
 
-    public static function digit(string $value, $min = 1, $max = 8): bool
+    public static function digit(string $value, $min = 1, $max = INF): bool
     {
         // Check if it's a digit and within the range $min to $max
         return ctype_digit($value) && (int)$value >= $min && (int)$value <= $max;
