@@ -4,28 +4,32 @@ USE signature_cuisine;
 
 -- CREATING TABLES
 
+-- Table: food
 CREATE TABLE food (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     price DECIMAL(10,2) NOT NULL,
     category ENUM('main', 'dessert', 'beverage') NOT NULL
 );
 
+-- Table: customerDetails
 CREATE TABLE customerDetails (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     firstName VARCHAR(100) NOT NULL,
     lastName VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
     phone VARCHAR(20) NOT NULL
 );
 
+-- Table: branch
 CREATE TABLE branch (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL
 );
 
+-- Table: reservation
 CREATE TABLE reservation (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     date DATE NOT NULL,
     time TIME NOT NULL,
     guestCount INT NOT NULL,
@@ -36,8 +40,9 @@ CREATE TABLE reservation (
     FOREIGN KEY (branchId) REFERENCES branch(id)
 );
 
+-- Table: staff
 CREATE TABLE staff (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     firstName VARCHAR(100) NOT NULL,
     lastName VARCHAR(100) NOT NULL,
     mobile VARCHAR(20) NOT NULL,
@@ -45,14 +50,16 @@ CREATE TABLE staff (
     FOREIGN KEY (branchId) REFERENCES branch(id)
 );
 
+-- Table: account
 CREATE TABLE account (
     email VARCHAR(100) PRIMARY KEY,
     password VARCHAR(255) NOT NULL,
-    isAdmin BOOLEAN NOT NULL,
+    isAdmin BOOLEAN NOT NULL DEFAULT FALSE,
     staffId INT NOT NULL,
     FOREIGN KEY (staffId) REFERENCES staff(id)
 );
 
+-- Table: queries
 CREATE TABLE queries (
     id INT PRIMARY KEY AUTO_INCREMENT,
     senderName VARCHAR(100) NOT NULL,
