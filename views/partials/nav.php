@@ -12,7 +12,6 @@
                             </button>
 
                             <!-- Collapsible navbar content -->
-                            <?php session_start(); ?>
                             <div class="collapse navbar-collapse" id="navbarNav">
                                 <ul class="navbar-nav ms-auto">
                                     <!-- Public links -->

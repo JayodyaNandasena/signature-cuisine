@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once __DIR__ . '/../Core/Database.php';
 require_once __DIR__ . '/../Core/Validator.php';
 
@@ -35,6 +36,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($user) {
         // Login successful
+        $_SESSION['user_id'] = $user['staffId'];    // store user ID
+
+        if ($user->isAdmin) {
+            $_SESSION['role'] = 'admin';
+        } else {
+            $_SESSION['role'] = 'staff';
+        }
+
         header('Location: ../controllers/home.php');
     } else {
         // Login failed
