@@ -224,7 +224,8 @@ require('../partials/layout.php')
                             <label for="price" class="form-label">
                                 <i class="fas fa-money-bill-wave me-2"></i>Price (LKR)
                             </label>
-                            <input type="number" min="0.00" max="10000.00" step="0.01" class="form-control" id="price" name="price">
+                            <input type="number" min="0.00" max="10000.00" step="0.01" class="form-control" id="price"
+                                   name="price">
                             <div class="invalid-feedback d-block text-danger" id="priceError"></div>
                         </div>
                     </div>
@@ -245,7 +246,8 @@ require('../partials/layout.php')
     </div>
 </div>
 
-<div id="menuAlert" class="position-fixed bottom-0 end-0 px-4 mx-5 alert"></div> <!-- alert for add new menu item form -->
+<div id="menuAlert"
+     class="position-fixed bottom-0 end-0 px-4 mx-5 alert"></div> <!-- alert for add new menu item form -->
 
 <script src="/signature-cuisine/assets/js/vendor/jquery-1.11.2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

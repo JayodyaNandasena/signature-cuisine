@@ -13,7 +13,7 @@ try {
          FROM queries
          WHERE reply IS NULL
          ORDER BY id ASC"
-     )->get();
+    )->get();
 
 } catch (Exception $e) {
     // Handle errors

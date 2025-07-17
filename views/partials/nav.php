@@ -58,7 +58,8 @@
                                         <a class="nav-link" href="/signature-cuisine/controllers/login.php">Login</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link booking" href="/signature-cuisine/controllers/reservation.php">Reservations</a>
+                                        <a class="nav-link booking"
+                                           href="/signature-cuisine/controllers/reservation.php">Reservations</a>
                                     </li>
                                 <?php endif; ?>
                             </ul>

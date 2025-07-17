@@ -23,7 +23,7 @@ if (!Validator::date($date)) {
     $errors['date'] = 'Date is required and must not be in the past.';
 }
 
-if (!Validator::inArray($time, ['19:30','20:00', '20:30', '21:00', '21:30', '22:00'])) {
+if (!Validator::inArray($time, ['19:30', '20:00', '20:30', '21:00', '21:30', '22:00'])) {
     $errors['time'] = 'Time is required and must be one of the available options.';
 }
 

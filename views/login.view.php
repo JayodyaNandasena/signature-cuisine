@@ -19,7 +19,8 @@ require('partials/layout.php')
                         <label for="email" class="form-label">
                             <i class="fas fa-envelope me-2"></i>Email
                         </label>
-                        <input type="email" class="form-control<?= isset($errors['email']) ? ' is-invalid' : '' ?>" id="email" name="email" value="<?= htmlspecialchars($email ?? '') ?>" required/>
+                        <input type="email" class="form-control<?= isset($errors['email']) ? ' is-invalid' : '' ?>"
+                               id="email" name="email" value="<?= htmlspecialchars($email ?? '') ?>" required/>
                         <?php if (isset($errors['email'])) : ?>
                             <p class="invalid-feedback d-block"><?= $errors['email'] ?></p>
                         <?php endif; ?>
@@ -28,7 +29,9 @@ require('partials/layout.php')
                         <label for="password" class="form-label">
                             <i class="fas fa-lock me-2"></i>Password
                         </label>
-                        <input type="password" class="form-control<?= isset($errors['password']) ? ' is-invalid' : '' ?>" id="password" name="password" required/>
+                        <input type="password"
+                               class="form-control<?= isset($errors['password']) ? ' is-invalid' : '' ?>" id="password"
+                               name="password" required/>
                         <?php if (isset($errors['password'])) : ?>
                             <p class="invalid-feedback d-block"><?= $errors['password'] ?></p>
                         <?php endif; ?>

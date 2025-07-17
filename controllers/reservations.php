@@ -13,7 +13,7 @@ try {
          FROM reservation
          WHERE STR_TO_DATE(CONCAT(date, ' ', time), '%Y-%m-%d %H:%i:%s') >= NOW()
          ORDER BY date ASC, time ASC"
-     )->get();
+    )->get();
 
 } catch (Exception $e) {
     // Handle errors

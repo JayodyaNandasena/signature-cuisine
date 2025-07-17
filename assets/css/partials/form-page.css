@@ -98,8 +98,12 @@ body::before {
 }
 
 @keyframes shimmer {
-    0%, 100% { background-position: 200% 0; }
-    50% { background-position: -200% 0; }
+    0%, 100% {
+        background-position: 200% 0;
+    }
+    50% {
+        background-position: -200% 0;
+    }
 }
 
 .form-card:hover {
@@ -149,6 +153,7 @@ body::before {
         padding: 1.5rem 1rem;
         margin: 0 1rem;
     }
+
     .category-header i {
         width: 28px;
         height: 28px;

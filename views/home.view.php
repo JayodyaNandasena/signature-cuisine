@@ -11,7 +11,8 @@
                             <h1>Signature Cuisine</h1>
                             <p>Enjoy authentic flavors, warm service, and a welcoming atmosphere that turn every
                                 meal into a memory</p>
-                            <button class="btn-lg" onclick="window.location.href='/signature-cuisine/controllers/reservation.php'">
+                            <button class="btn-lg"
+                                    onclick="window.location.href='/signature-cuisine/controllers/reservation.php'">
                                 Reserve Your Spot
                             </button>
                         </div>
@@ -63,9 +64,13 @@
                                 <div class="single_features_text">
                                     <h4 class="mb-2">Reserve Your Table</h4>
                                     <h3 class="mb-4">Experience the Taste of Elegance</h3>
-                                    <p>Ready to indulge in an unforgettable dining experience? Book your table now and enjoy our chef's finest creations in a warm and inviting atmosphere.</p>
-                                    <p>It can be a romantic dinner, a family gathering, or a special celebration with friends. Make your reservation today to secure your preferred time and setting.</p>
-                                    <a href="../controllers/reservation.php" class="btn btn-primary">Make a Reservation</a>
+                                    <p>Ready to indulge in an unforgettable dining experience? Book your table now and
+                                        enjoy our chef's finest creations in a warm and inviting atmosphere.</p>
+                                    <p>It can be a romantic dinner, a family gathering, or a special celebration with
+                                        friends. Make your reservation today to secure your preferred time and
+                                        setting.</p>
+                                    <a href="../controllers/reservation.php" class="btn btn-primary">Make a
+                                        Reservation</a>
                                 </div>
                             </div>
                         </div>

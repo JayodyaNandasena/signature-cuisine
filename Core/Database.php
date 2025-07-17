@@ -1,4 +1,5 @@
 <?php
+
 namespace Core;
 
 use PDO;
@@ -12,7 +13,8 @@ class database
     private $config;
 
     // Private constructor to prevent direct instantiation
-    private function __construct() {
+    private function __construct()
+    {
         $this->config = require_once __DIR__ . '/../assets/config/config.php';
 
         try {
@@ -73,15 +75,22 @@ class database
         return $result;
     }
 
-    public function prepare($query) {
+    public function prepare($query)
+    {
         return $this->connection->prepare($query);
     }
 
-    public function lastInsertId() {
+    public function lastInsertId()
+    {
         return $this->connection->lastInsertId();
     }
 
     // Prevent cloning and unserialization
-    private function __clone() {}
-    public function __wakeup() {}
+    private function __clone()
+    {
+    }
+
+    public function __wakeup()
+    {
+    }
 }

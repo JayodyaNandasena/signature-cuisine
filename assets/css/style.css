@@ -180,13 +180,14 @@ section {
 }
 
 /* Menu Section */
-.head_title{
+.head_title {
     color: var(--darker-bg);
     font-family: 'Pacifico', cursive;
     font-size: 1.875rem;
     padding-top: 50px;
     padding-bottom: 20px;
 }
+
 .ourPackage {
     background: url(../images/wooden-bg.jpg) no-repeat center top;
     background-size: cover;

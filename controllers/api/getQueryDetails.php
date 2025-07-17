@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../../Core/Database.php';
+
 use Core\database;
 
 header('Content-Type: application/json');

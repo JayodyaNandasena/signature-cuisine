@@ -9,11 +9,11 @@ use Core\database;
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (! Validator::string($_POST['reply'], 1, 1000)) {
+    if (!Validator::string($_POST['reply'], 1, 1000)) {
         $errors['reply'] = 'A reply of no more than 1,000 characters is required.';
     }
 
-    if (! empty($errors)) {
+    if (!empty($errors)) {
         header('Location: ../queries.php');
     }
 

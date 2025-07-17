@@ -30,14 +30,14 @@ $page_css = $page_css ?? 'default';
     <link rel="stylesheet" href="/signature-cuisine/assets/css/partials/footer.css">
 
     <?php if (isset($page_css) && $page_css === 'form'): ?>
-    <link rel="stylesheet" href="/signature-cuisine/assets/css/partials/form-page.css">
+        <link rel="stylesheet" href="/signature-cuisine/assets/css/partials/form-page.css">
     <?php elseif ($page_css === 'details'): ?>
-    <link rel="stylesheet" href="/signature-cuisine/assets/css/partials/details-page.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-          crossorigin="anonymous"/>
+        <link rel="stylesheet" href="/signature-cuisine/assets/css/partials/details-page.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+              crossorigin="anonymous"/>
     <?php else: ?>
         <!-- Default CSS -->
-    <link rel="stylesheet" href="/signature-cuisine/assets/css/style.css">
+        <link rel="stylesheet" href="/signature-cuisine/assets/css/style.css">
     <?php endif; ?>
 
     <link rel="icon" href="/signature-cuisine/assets/images/favicon.ico" type="image/x-icon">

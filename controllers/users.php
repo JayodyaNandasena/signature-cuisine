@@ -9,12 +9,12 @@ try {
 
     // Fetch all users
     $users = $db->query(
-    "SELECT staff.id, staff.firstName, staff.lastName, staff.mobile, branch.name as branchName
+        "SELECT staff.id, staff.firstName, staff.lastName, staff.mobile, branch.name as branchName
      FROM staff
      INNER JOIN branch
      ON staff.branchId=branch.id
      ORDER BY id ASC"
-     )->get();
+    )->get();
 
 } catch (Exception $e) {
     // Handle errors

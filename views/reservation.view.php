@@ -37,7 +37,7 @@ require('partials/layout.php')
                             <label class="form-label" for="guestCount">
                                 <i class="fas fa-users me-2"></i>Party Size
                             </label>
-                            <select class="form-select" id="guestCount" name="guestCount" >
+                            <select class="form-select" id="guestCount" name="guestCount">
                                 <option value="1">1 Guest</option>
                                 <option selected value="2">2 Guests</option>
                                 <option value="3">3 Guests</option>
@@ -147,7 +147,8 @@ require('partials/layout.php')
                         <label class="form-label" for="notes">
                             <i class="fas fa-comment me-2"></i>Additional Notes
                         </label>
-                        <textarea class="form-control" id="notes" name="notes" placeholder="Anniversary celebration, dietary restrictions, preferred seating, etc."
+                        <textarea class="form-control" id="notes" name="notes"
+                                  placeholder="Anniversary celebration, dietary restrictions, preferred seating, etc."
                                   rows="4"></textarea>
                         <div class="invalid-feedback d-block text-danger" id="notesError"></div>
                     </div>
