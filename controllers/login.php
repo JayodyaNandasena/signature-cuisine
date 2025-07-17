@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Login successful
         $_SESSION['user_id'] = $user['staffId'];    // store user ID
 
-        if ($user->isAdmin) {
+        if ($user['isAdmin']) {
             $_SESSION['role'] = 'admin';
         } else {
             $_SESSION['role'] = 'staff';
