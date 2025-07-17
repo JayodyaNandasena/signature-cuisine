@@ -1,5 +1,4 @@
-<?php require('partials/head.php') ?>
-<?php require('partials/nav.php') ?>
+<?php require('partials/layout.php') ?>
 
 <!-- Slider Section -->
 <section id="slider" class="slider">

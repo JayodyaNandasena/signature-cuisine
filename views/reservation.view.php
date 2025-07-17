@@ -1,7 +1,6 @@
 <?php
 $page_css = 'form';
-require('partials/head.php');
-require('partials/nav.php')
+require('partials/layout.php')
 ?>
 
 <section class="form-page-section reservation-form-section py-5">
