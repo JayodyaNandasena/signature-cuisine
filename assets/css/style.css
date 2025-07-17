@@ -217,7 +217,7 @@ section {
 }
 
 .single_package_one {
-    background: url(../images/newstwo.jpg) left center no-repeat;
+    background: url(../images/newstwo.jpg) right center no-repeat;
 }
 
 .single_package_two {
@@ -225,5 +225,19 @@ section {
 }
 
 .single_package_three {
-    background: url(../images/newsone.jpg) left center no-repeat;
+    background: url(../images/newsone.jpg) right center no-repeat;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.menu-item .dots {
+    flex: 1;
+    border-bottom: 1px dotted #999;
+    margin: 0 8px;
+    height: 0.85em;
 }
