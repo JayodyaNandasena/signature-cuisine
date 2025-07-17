@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once __DIR__ . '/../../Core/Database.php';
 require_once __DIR__ . '/../../Core/Validator.php';
 
@@ -17,8 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $db = database::getInstance();
-    $db->query('UPDATE queries SET reply = :reply WHERE id = :id', [
+    $db->query('UPDATE queries SET reply = :reply, staffId = :staffId WHERE id = :id', [
         'reply' => $_POST['reply'],
+        'staffId' => $_SESSION['user_id'],
         'id' => $_POST['id']
     ]);
 
