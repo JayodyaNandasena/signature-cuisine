@@ -46,6 +46,10 @@
     margin-bottom: 0px;
 }
 
+.nav-item{
+    padding-left: 10px;
+}
+
 .navbar-custom .navbar-nav .nav-link {
     color: #fff !important;
 }
