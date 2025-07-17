@@ -11,7 +11,9 @@
                             <h1>Signature Cuisine</h1>
                             <p>Enjoy authentic flavors, warm service, and a welcoming atmosphere that turn every
                                 meal into a memory</p>
-                            <button class="btn-lg">Reserve Your Spot</button>
+                            <button class="btn-lg" onclick="window.location.href='/signature-cuisine/controllers/reservation.php'">
+                                Reserve Your Spot
+                            </button>
                         </div>
                     </div>
                 </div>
