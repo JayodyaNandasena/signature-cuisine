@@ -32,4 +32,3 @@ try {
 
 // Include the view
 require(__DIR__ . '/../views/admin/menu.view.php');
-?>
