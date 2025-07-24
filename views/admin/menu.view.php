@@ -1,6 +1,6 @@
 <?php
 $page_css = 'details';
-require('../partials/layout.php')
+require(__DIR__ . '\..\partials\layout.php')
 ?>
 
 <div class="container py-5 details-section">
